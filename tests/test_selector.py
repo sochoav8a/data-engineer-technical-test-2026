@@ -21,3 +21,27 @@ def test_select_pages_skips_toc(tmp_path):
     selected = select_pages(pages, config, embed_store, embed_settings)
     assert 0 not in selected
     assert 1 in selected
+
+
+def test_select_pages_expands_window(tmp_path):
+    pages = [
+        "Intro section without signals.",
+        "More background content.",
+        "Mineral Resources table 3-2 measured indicated inferred 100 1.2",
+        "Additional notes and discussion.",
+        "Appendix text.",
+    ]
+    config = SECTION_CONFIGS["resources"]
+    embed_settings = EmbeddingSettings(
+        enabled=False,
+        api_key=None,
+        model_name="test",
+        max_chars=500,
+        max_pages=10,
+    )
+    embed_store = EmbeddingStore(tmp_path, embed_settings)
+
+    selected = select_pages(pages, config, embed_store, embed_settings)
+    assert set([1, 2, 3]).issubset(selected)
+    assert 0 not in selected
+    assert 4 not in selected

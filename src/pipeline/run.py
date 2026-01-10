@@ -20,12 +20,22 @@ def main() -> None:
     parser.add_argument("--limit", type=int, default=None, help="Limit number of PDFs")
     parser.add_argument("--mode", default=None, choices=["full", "smart"], help="Extraction mode")
     parser.add_argument("--provider", default=None, choices=["gemini", "mock"], help="LLM provider")
-    parser.add_argument("--no-embeddings", action="store_true", help="Disable embedding-based ranking")
+    parser.add_argument(
+        "--no-embeddings", action="store_true", help="Disable embedding-based ranking"
+    )
     parser.add_argument("--no-retries", action="store_true", help="Disable fallback retries")
-    parser.add_argument("--dry-run", action="store_true", help="Skip LLM calls and only score/select pages")
-    parser.add_argument("--only-resources", action="store_true", help="Extract only resources section")
-    parser.add_argument("--only-reserves", action="store_true", help="Extract only reserves section")
-    parser.add_argument("--workers", type=int, default=None, help="Parallel workers for PDF processing")
+    parser.add_argument(
+        "--dry-run", action="store_true", help="Skip LLM calls and only score/select pages"
+    )
+    parser.add_argument(
+        "--only-resources", action="store_true", help="Extract only resources section"
+    )
+    parser.add_argument(
+        "--only-reserves", action="store_true", help="Extract only reserves section"
+    )
+    parser.add_argument(
+        "--workers", type=int, default=None, help="Parallel workers for PDF processing"
+    )
     parser.add_argument("--log-level", default=None, help="Logging level (e.g., INFO, DEBUG)")
     parser.add_argument("--log-dir", default=None, help="Directory for log files")
 
@@ -60,7 +70,10 @@ def main() -> None:
             sections.append("reserves")
         settings.sections = sections
 
-    configure_logging(Path(settings.log_dir) if settings.log_dir else Path(settings.output_dir) / "logs", settings.log_level)
+    configure_logging(
+        Path(settings.log_dir) if settings.log_dir else Path(settings.output_dir) / "logs",
+        settings.log_level,
+    )
     run_pipeline(
         data_dir=Path(args.data_dir),
         output_dir=Path(args.output_dir),

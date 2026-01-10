@@ -1,10 +1,9 @@
 from __future__ import annotations
 
 import csv
-import json
 import sqlite3
 from pathlib import Path
-from typing import Iterable
+from typing import Iterable, Mapping, Sequence
 
 from .models import ExtractionResult
 
@@ -24,8 +23,10 @@ def _normalize_pages(pages: str | None) -> str | None:
     cleaned = cleaned.replace(";", ",")
     cleaned = cleaned.replace("|", ",")
     cleaned = cleaned.replace("/", ",")
-    cleaned = " ".join(cleaned.split())
-    return cleaned
+    parts = [part.strip() for part in cleaned.split(",") if part.strip()]
+    if not parts:
+        return ""
+    return ", ".join(parts)
 
 
 def save_json(results: Iterable[ExtractionResult], output_dir: Path) -> None:
@@ -38,7 +39,7 @@ def save_json(results: Iterable[ExtractionResult], output_dir: Path) -> None:
         path.write_text(result.model_dump_json(indent=2), encoding="utf-8")
 
 
-def _write_csv(path: Path, rows: list[dict[str, object]]) -> None:
+def _write_csv(path: Path, rows: Sequence[Mapping[str, object]]) -> None:
     if not rows:
         return
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -84,19 +85,19 @@ def save_csvs(results: Iterable[ExtractionResult], output_dir: Path) -> None:
                 }
             )
 
-        for res in result.reserves:
+        for reserve in result.reserves:
             reserve_rows.append(
                 {
                     "source_pdf": meta.source_pdf,
-                    "category": res.category,
-                    "metal": res.metal,
-                    "tonnes_value": res.tonnes.value,
-                    "tonnes_unit": res.tonnes.unit,
-                    "grade_value": res.grade.value,
-                    "grade_unit": res.grade.unit,
-                    "contained_value": res.contained_metal.value,
-                    "contained_unit": res.contained_metal.unit,
-                    "source_pages": _normalize_pages(res.source_pages),
+                    "category": reserve.category,
+                    "metal": reserve.metal,
+                    "tonnes_value": reserve.tonnes.value,
+                    "tonnes_unit": reserve.tonnes.unit,
+                    "grade_value": reserve.grade.value,
+                    "grade_unit": reserve.grade.unit,
+                    "contained_value": reserve.contained_metal.value,
+                    "contained_unit": reserve.contained_metal.unit,
+                    "source_pages": _normalize_pages(reserve.source_pages),
                 }
             )
 
@@ -241,7 +242,7 @@ def save_sqlite(results: Iterable[ExtractionResult], sqlite_path: Path, reset: b
                 ),
             )
 
-        for res in result.reserves:
+        for reserve in result.reserves:
             cur.execute(
                 """
                 INSERT INTO reserves
@@ -251,15 +252,15 @@ def save_sqlite(results: Iterable[ExtractionResult], sqlite_path: Path, reset: b
                 """,
                 (
                     meta.source_pdf,
-                    res.category,
-                    res.metal,
-                    res.tonnes.value,
-                    res.tonnes.unit,
-                    res.grade.value,
-                    res.grade.unit,
-                    res.contained_metal.value,
-                    res.contained_metal.unit,
-                    _normalize_pages(res.source_pages),
+                    reserve.category,
+                    reserve.metal,
+                    reserve.tonnes.value,
+                    reserve.tonnes.unit,
+                    reserve.grade.value,
+                    reserve.grade.unit,
+                    reserve.contained_metal.value,
+                    reserve.contained_metal.unit,
+                    _normalize_pages(reserve.source_pages),
                 ),
             )
 

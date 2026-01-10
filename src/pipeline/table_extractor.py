@@ -28,7 +28,7 @@ def _tables_from_camelot(pdf_path: Path, pages: list[int]) -> list[dict[str, str
             if text.strip():
                 tables.append(
                     {
-                        "page": table.page,
+                        "page": str(table.page),
                         "method": f"camelot_{flavor}",
                         "text": text.strip(),
                     }
@@ -60,7 +60,7 @@ def _tables_from_pdfplumber(pdf_path: Path, page_indices: list[int]) -> list[dic
                     if text:
                         tables.append(
                             {
-                                "page": idx + 1,
+                                "page": str(idx + 1),
                                 "method": "pdfplumber",
                                 "text": text,
                             }
@@ -73,11 +73,19 @@ def _tables_from_pdfplumber(pdf_path: Path, page_indices: list[int]) -> list[dic
 SECTION_TABLE_KEYWORDS = {
     "resources": [
         "mineral resource",
+        "resource estimate",
         "measured",
         "indicated",
         "inferred",
+        "measured and indicated",
+        "measured + indicated",
+        "m+i",
         "tonnes",
+        "kt",
+        "mt",
         "grade",
+        "g/t",
+        "oz",
         "contained",
         "au",
         "ag",
@@ -85,10 +93,18 @@ SECTION_TABLE_KEYWORDS = {
     ],
     "reserves": [
         "mineral reserve",
+        "reserve estimate",
         "proven",
         "probable",
+        "proven and probable",
+        "proven + probable",
+        "p&p",
         "tonnes",
+        "kt",
+        "mt",
         "grade",
+        "g/t",
+        "oz",
         "contained",
         "au",
         "ag",
@@ -101,8 +117,16 @@ SECTION_TABLE_KEYWORDS = {
         "opex",
         "npv",
         "irr",
+        "payback",
         "cash flow",
+        "sustaining",
+        "initial",
+        "pre-tax",
+        "after-tax",
+        "life of mine",
+        "mine life",
         "usd",
+        "us$",
         "$",
     ],
 }
@@ -154,7 +178,9 @@ def extract_tables_for_pages(pdf_path: Path, page_indices: list[int]) -> list[di
     return tables
 
 
-def build_table_context(tables: list[dict[str, str]], max_rows: int = 40, max_chars: int = 20000) -> str:
+def build_table_context(
+    tables: list[dict[str, str]], max_rows: int = 40, max_chars: int = 20000
+) -> str:
     if not tables:
         return ""
     chunks: list[str] = []

@@ -5,16 +5,19 @@ import logging
 from pathlib import Path
 from typing import Any
 
+_LOG_CONFIGURED = False
+
 
 def configure_logging(log_dir: Path | None, level: str = "INFO") -> Path:
     target_dir = log_dir or Path("output") / "logs"
     target_dir.mkdir(parents=True, exist_ok=True)
     log_path = target_dir / "run.log"
 
-    root = logging.getLogger()
-    if getattr(root, "_configured", False):
+    global _LOG_CONFIGURED
+    if _LOG_CONFIGURED:
         return log_path
 
+    root = logging.getLogger()
     root.setLevel(level.upper())
     formatter = logging.Formatter("%(asctime)s %(levelname)s %(message)s")
 
@@ -26,7 +29,7 @@ def configure_logging(log_dir: Path | None, level: str = "INFO") -> Path:
     file_handler.setFormatter(formatter)
     root.addHandler(file_handler)
 
-    root._configured = True
+    _LOG_CONFIGURED = True
     return log_path
 
 
