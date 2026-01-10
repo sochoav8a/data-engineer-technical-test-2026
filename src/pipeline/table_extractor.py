@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 from pathlib import Path
 
 
@@ -69,6 +70,80 @@ def _tables_from_pdfplumber(pdf_path: Path, page_indices: list[int]) -> list[dic
     return tables
 
 
+SECTION_TABLE_KEYWORDS = {
+    "resources": [
+        "mineral resource",
+        "measured",
+        "indicated",
+        "inferred",
+        "tonnes",
+        "grade",
+        "contained",
+        "au",
+        "ag",
+        "cu",
+    ],
+    "reserves": [
+        "mineral reserve",
+        "proven",
+        "probable",
+        "tonnes",
+        "grade",
+        "contained",
+        "au",
+        "ag",
+        "cu",
+    ],
+    "economics": [
+        "capital",
+        "operating",
+        "capex",
+        "opex",
+        "npv",
+        "irr",
+        "cash flow",
+        "usd",
+        "$",
+    ],
+}
+
+
+def _table_score(text: str, keywords: list[str]) -> float:
+    lower = text.lower()
+    hits = sum(1 for kw in keywords if kw in lower)
+    numeric = sum(1 for ch in text if ch.isdigit())
+    rows = text.splitlines()
+    dense_rows = sum(1 for row in rows if row.count(",") >= 2 or row.count("\t") >= 2)
+    return hits * 3 + dense_rows + min(numeric / 50, 5)
+
+
+def filter_tables_for_section(
+    tables: list[dict[str, str]],
+    section: str,
+    max_tables: int = 6,
+) -> list[dict[str, str]]:
+    keywords = SECTION_TABLE_KEYWORDS.get(section, [])
+    seen: dict[str, tuple[float, dict[str, str]]] = {}
+    for table in tables:
+        text = (table.get("text") or "").strip()
+        if not text:
+            continue
+        digest = hashlib.sha256(text.encode("utf-8")).hexdigest()
+        if digest in seen:
+            continue
+        score = _table_score(text, keywords)
+        seen[digest] = (score, table)
+
+    scored = sorted(seen.values(), key=lambda item: item[0], reverse=True)
+    if not scored:
+        return []
+
+    filtered = [table for score, table in scored if score > 0]
+    if not filtered:
+        filtered = [table for _, table in scored]
+    return filtered[:max_tables]
+
+
 def extract_tables_for_pages(pdf_path: Path, page_indices: list[int]) -> list[dict[str, str]]:
     if not page_indices:
         return []
@@ -79,7 +154,7 @@ def extract_tables_for_pages(pdf_path: Path, page_indices: list[int]) -> list[di
     return tables
 
 
-def build_table_context(tables: list[dict[str, str]]) -> str:
+def build_table_context(tables: list[dict[str, str]], max_rows: int = 40, max_chars: int = 20000) -> str:
     if not tables:
         return ""
     chunks: list[str] = []
@@ -89,6 +164,12 @@ def build_table_context(tables: list[dict[str, str]]) -> str:
         text = table.get("text")
         if not text:
             continue
+        rows = text.splitlines()
+        if max_rows and len(rows) > max_rows:
+            rows = rows[:max_rows]
+            text = "\n".join(rows)
+        if max_chars and len(text) > max_chars:
+            text = text[:max_chars]
         label = f"Page {page}" if page else "Page"
         if method:
             label = f"{label} ({method})"

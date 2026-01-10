@@ -17,6 +17,7 @@ Do not convert units or scale values; keep value as shown in the document.
 Fill `raw` with the original string and `unit` with the unit text if present.
 Use source_pages only from Page N references in the provided context. Ignore table of contents page numbers.
 Use the document content only; do not guess.
+Tables may appear as CSV/TSV text; use the headers and numeric rows to extract values.
 """
 
 SECTION_TASKS = {
