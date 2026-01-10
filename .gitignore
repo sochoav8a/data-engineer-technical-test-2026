@@ -1,0 +1,22 @@
+# Environment / secrets
+.env
+.env.*
+Test_DataEngineer2026/.env
+Test_DataEngineer2026/.env.*
+
+# Virtualenvs
+.venv/
+Test_DataEngineer2026/.venv/
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Outputs / caches
+output/
+Test_DataEngineer2026/output/
+Test_DataEngineer2026/.pytest_cache/
+
+# OS
+.DS_Store
