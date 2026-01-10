@@ -44,10 +44,10 @@ def extract_pdf_pages(pdf_path: Path, cache_dir: Path | None = None) -> tuple[li
             except json.JSONDecodeError:
                 payload = None
             if isinstance(payload, dict) and payload.get("signature") == signature:
-                pages = payload.get("pages", [])
-                if isinstance(pages, list):
+                cached_pages = payload.get("pages", [])
+                if isinstance(cached_pages, list):
                     cache_hit = True
-                    return pages, cache_hit
+                    return cached_pages, cache_hit
 
     page_count = get_pdf_page_count(pdf_path)
     if page_count <= 0:
@@ -59,11 +59,13 @@ def extract_pdf_pages(pdf_path: Path, cache_dir: Path | None = None) -> tuple[li
             )
         except subprocess.CalledProcessError:
             text = ""
-        pages = [text]
+        single_pages = [text]
         if cache_dir:
             cache_path = _cache_path(pdf_path, cache_dir)
-            cache_path.write_text(json.dumps({"signature": signature, "pages": pages}), encoding="utf-8")
-        return pages, cache_hit
+            cache_path.write_text(
+                json.dumps({"signature": signature, "pages": single_pages}), encoding="utf-8"
+            )
+        return single_pages, cache_hit
 
     pages: list[str] = []
     for page_num in range(1, page_count + 1):
@@ -87,7 +89,9 @@ def extract_pdf_pages(pdf_path: Path, cache_dir: Path | None = None) -> tuple[li
         pages.append(text)
     if cache_dir:
         cache_path = _cache_path(pdf_path, cache_dir)
-        cache_path.write_text(json.dumps({"signature": signature, "pages": pages}), encoding="utf-8")
+        cache_path.write_text(
+            json.dumps({"signature": signature, "pages": pages}), encoding="utf-8"
+        )
     return pages, cache_hit
 
 

@@ -26,12 +26,18 @@ def _read_json_output(output_dir: Path, pdf_name: str) -> int:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Estimate LLM cost from run_manifest.json + JSON outputs")
-    parser.add_argument("--manifest", default="output/run_manifest.json", help="Path to run_manifest.json")
+    parser = argparse.ArgumentParser(
+        description="Estimate LLM cost from run_manifest.json + JSON outputs"
+    )
+    parser.add_argument(
+        "--manifest", default="output/run_manifest.json", help="Path to run_manifest.json"
+    )
     parser.add_argument("--output-dir", default="output", help="Output directory with json/ folder")
     parser.add_argument("--chars-per-token", type=float, default=4.0, help="Approx chars per token")
     parser.add_argument("--input-per-1m", type=float, default=0.30, help="USD per 1M input tokens")
-    parser.add_argument("--output-per-1m", type=float, default=2.50, help="USD per 1M output tokens")
+    parser.add_argument(
+        "--output-per-1m", type=float, default=2.50, help="USD per 1M output tokens"
+    )
     args = parser.parse_args()
 
     manifest = _load_manifest(Path(args.manifest))
@@ -76,7 +82,9 @@ def main() -> None:
     for row in rows:
         print(
             "- {pdf}: input_chars={input_chars}, output_chars={output_chars}, "
-            "input_tokens={input_tokens}, output_tokens={output_tokens}, cost=${estimated_cost_usd}".format(**row)
+            "input_tokens={input_tokens}, output_tokens={output_tokens}, cost=${estimated_cost_usd}".format(
+                **row
+            )
         )
 
     print("\nTotals:")

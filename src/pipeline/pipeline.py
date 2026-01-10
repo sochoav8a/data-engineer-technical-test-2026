@@ -13,17 +13,38 @@ from pydantic import BaseModel
 from .config import Settings
 from .embeddings import EmbeddingSettings, EmbeddingStore
 from .llm import SECTION_TASKS, extract_structured, extract_with_schema
-from .models import EconomicsResult, ExtractionResult, MetadataResult, ResourcesResult, ReservesResult
+from .models import (
+    EconomicsResult,
+    ExtractionResult,
+    MetadataResult,
+    ReservesResult,
+    ResourcesResult,
+)
 from .observability import configure_logging, log_event
 from .parsers import extract_pdf_pages, parse_pdf_to_markdown
 from .quality import apply_quality_checks
 from .selector import FALLBACK_SECTION_CONFIGS, SECTION_CONFIGS, build_context, select_pages
 from .storage import save_csvs, save_json, save_sqlite
-from .table_extractor import build_table_context, extract_tables_for_pages
-from .utils import clamp_text, file_sha256
-
+from .table_extractor import (
+    build_table_context,
+    extract_tables_for_pages,
+    filter_tables_for_section,
+)
+from .utils import (
+    NO_ECONOMICS_PATTERNS,
+    NO_RESERVES_PATTERNS,
+    clamp_text,
+    extract_relevant_page_snippets,
+    file_sha256,
+    find_pages_with_patterns,
+)
 
 SchemaModel = TypeVar("SchemaModel", bound=BaseModel)
+TABLE_LIMITS = {
+    "resources": 8,
+    "reserves": 8,
+    "economics": 8,
+}
 
 
 def _score_result(result: ExtractionResult) -> float:
@@ -67,6 +88,29 @@ def _resolve_sections(settings: Settings) -> set[str]:
     if settings.sections:
         return set(settings.sections)
     return {"metadata", "resources", "reserves", "economics"}
+
+
+def _combine_contexts(table_context: str, text_context: str, max_chars: int) -> str:
+    if not table_context:
+        return text_context
+    if not text_context:
+        return table_context
+    table_budget = int(max_chars * 0.4)
+    text_budget = max_chars - table_budget - 2
+    table_part = clamp_text(table_context, table_budget)
+    text_part = clamp_text(text_context, text_budget)
+    return f"{table_part}\n\n{text_part}"
+
+
+def _focus_context(context: str, keywords: list[str], settings: Settings) -> str:
+    if settings.extraction_mode != "smart":
+        return context
+    if not context or len(context) < 20000:
+        return context
+    focused = extract_relevant_page_snippets(context, keywords, window=12)
+    if focused and len(focused) < len(context):
+        return focused
+    return context
 
 
 def _build_two_stage_contexts(
@@ -127,7 +171,11 @@ def _extract_section(
     task_key: str,
     retry: bool = False,
 ):
-    model_name = settings.retry_model if (retry and settings.use_retry_model and settings.retry_model) else settings.model_name
+    model_name = (
+        settings.retry_model
+        if (retry and settings.use_retry_model and settings.retry_model)
+        else settings.model_name
+    )
     return extract_with_schema(
         document_text=clamp_text(context, settings.max_chars),
         model_name=model_name,
@@ -183,7 +231,11 @@ def process_pdf_two_stage(pdf_path: Path, settings: Settings) -> tuple[Extractio
     pdf_start = time.perf_counter()
     log_event(logger, "pdf_start", pdf=pdf_name, strategy="two_stage", sections=sorted(sections))
 
-    pages, contexts, page_indices, context_metrics = _build_two_stage_contexts(pdf_path, settings, sections)
+    pages, contexts, page_indices, context_metrics = _build_two_stage_contexts(
+        pdf_path, settings, sections
+    )
+    no_reserves_pages = find_pages_with_patterns(pages, NO_RESERVES_PATTERNS)
+    no_economics_pages = find_pages_with_patterns(pages, NO_ECONOMICS_PATTERNS)
     log_event(
         logger,
         "pages_extracted",
@@ -212,8 +264,22 @@ def process_pdf_two_stage(pdf_path: Path, settings: Settings) -> tuple[Extractio
     resources_context = contexts.get("resources", "")
     reserves_context = contexts.get("reserves", "")
     economics_context = contexts.get("economics", "")
+    if "resources" in sections:
+        resources_context = _focus_context(
+            resources_context,
+            SECTION_CONFIGS["resources"].keywords + SECTION_CONFIGS["resources"].table_keywords,
+            settings,
+        )
+    if "reserves" in sections:
+        reserves_context = _focus_context(
+            reserves_context,
+            SECTION_CONFIGS["reserves"].keywords + SECTION_CONFIGS["reserves"].table_keywords,
+            settings,
+        )
+    # Economics tends to be sparse; keep full context to avoid losing values.
 
     table_counts: dict[str, int] = {}
+    table_selected: dict[str, int] = {}
     table_durations: dict[str, float] = {}
     for key in ["resources", "reserves", "economics"]:
         if key not in sections:
@@ -221,22 +287,33 @@ def process_pdf_two_stage(pdf_path: Path, settings: Settings) -> tuple[Extractio
         pages_for_section = page_indices.get(key, [])
         table_start = time.perf_counter()
         tables = extract_tables_for_pages(pdf_path, pages_for_section)
+        filtered_tables = filter_tables_for_section(
+            tables, key, max_tables=TABLE_LIMITS.get(key, 6)
+        )
         table_durations[key] = time.perf_counter() - table_start
         table_counts[key] = len(tables)
-        table_context = build_table_context(tables)
+        table_selected[key] = len(filtered_tables)
+        table_context = build_table_context(filtered_tables)
         if table_context:
             if key == "resources":
-                resources_context = table_context
+                resources_context = _combine_contexts(
+                    table_context, resources_context, settings.max_chars
+                )
             elif key == "reserves":
-                reserves_context = table_context
+                reserves_context = _combine_contexts(
+                    table_context, reserves_context, settings.max_chars
+                )
             else:
-                economics_context = table_context
+                economics_context = _combine_contexts(
+                    table_context, economics_context, settings.max_chars
+                )
         log_event(
             logger,
             "tables_extracted",
             pdf=pdf_name,
             section=key,
             tables=table_counts[key],
+            tables_selected=table_selected[key],
             pages=pages_for_section,
             duration_sec=round(table_durations[key], 3),
         )
@@ -249,44 +326,52 @@ def process_pdf_two_stage(pdf_path: Path, settings: Settings) -> tuple[Extractio
     economics_result = EconomicsResult()
 
     if "metadata" in sections:
-        metadata_result, llm_durations["metadata"], llm_inputs["metadata"] = _extract_section_with_metrics(
-            contexts.get("metadata", ""),
-            settings,
-            MetadataResult,
-            "metadata",
-            logger,
-            pdf_name,
-            "metadata",
+        metadata_result, llm_durations["metadata"], llm_inputs["metadata"] = (
+            _extract_section_with_metrics(
+                contexts.get("metadata", ""),
+                settings,
+                MetadataResult,
+                "metadata",
+                logger,
+                pdf_name,
+                "metadata",
+            )
         )
     if "resources" in sections:
-        resources_result, llm_durations["resources"], llm_inputs["resources"] = _extract_section_with_metrics(
-            resources_context,
-            settings,
-            ResourcesResult,
-            "resources",
-            logger,
-            pdf_name,
-            "resources",
+        resources_result, llm_durations["resources"], llm_inputs["resources"] = (
+            _extract_section_with_metrics(
+                resources_context,
+                settings,
+                ResourcesResult,
+                "resources",
+                logger,
+                pdf_name,
+                "resources",
+            )
         )
     if "reserves" in sections:
-        reserves_result, llm_durations["reserves"], llm_inputs["reserves"] = _extract_section_with_metrics(
-            reserves_context,
-            settings,
-            ReservesResult,
-            "reserves",
-            logger,
-            pdf_name,
-            "reserves",
+        reserves_result, llm_durations["reserves"], llm_inputs["reserves"] = (
+            _extract_section_with_metrics(
+                reserves_context,
+                settings,
+                ReservesResult,
+                "reserves",
+                logger,
+                pdf_name,
+                "reserves",
+            )
         )
     if "economics" in sections:
-        economics_result, llm_durations["economics"], llm_inputs["economics"] = _extract_section_with_metrics(
-            economics_context,
-            settings,
-            EconomicsResult,
-            "economics",
-            logger,
-            pdf_name,
-            "economics",
+        economics_result, llm_durations["economics"], llm_inputs["economics"] = (
+            _extract_section_with_metrics(
+                economics_context,
+                settings,
+                EconomicsResult,
+                "economics",
+                logger,
+                pdf_name,
+                "economics",
+            )
         )
 
     warnings: list[str] = []
@@ -359,6 +444,10 @@ def process_pdf_two_stage(pdf_path: Path, settings: Settings) -> tuple[Extractio
                     )
             else:
                 warnings.append("reserves missing; retries disabled")
+            if no_reserves_pages:
+                warnings.append(
+                    f"no reserves reported in document (pages: {', '.join(map(str, no_reserves_pages))})"
+                )
 
     if "economics" in sections and not settings.dry_run:
         if not _has_economics(economics_result.economics):
@@ -382,6 +471,10 @@ def process_pdf_two_stage(pdf_path: Path, settings: Settings) -> tuple[Extractio
                     )
             else:
                 warnings.append("economics missing; retries disabled")
+            if no_economics_pages:
+                warnings.append(
+                    f"economics not reported in document (pages: {', '.join(map(str, no_economics_pages))})"
+                )
 
     result = ExtractionResult(
         metadata=metadata_result.metadata,
@@ -409,6 +502,9 @@ def process_pdf_two_stage(pdf_path: Path, settings: Settings) -> tuple[Extractio
         "cache_hit": context_metrics["cache_hit"],
         "selected_pages": page_indices,
         "table_counts": table_counts,
+        "table_selected": table_selected,
+        "no_reserves_pages": no_reserves_pages,
+        "no_economics_pages": no_economics_pages,
         "durations_sec": {
             "page_extract": round(context_metrics["page_extract_sec"], 3),
             "selection": {k: round(v, 3) for k, v in context_metrics["selection_sec"].items()},
@@ -516,7 +612,9 @@ def run_pipeline(
     limit: int | None = None,
 ) -> list[ExtractionResult]:
     if not logging.getLogger().handlers:
-        configure_logging(Path(settings.log_dir) if settings.log_dir else output_dir / "logs", settings.log_level)
+        configure_logging(
+            Path(settings.log_dir) if settings.log_dir else output_dir / "logs", settings.log_level
+        )
     logger = logging.getLogger("pipeline")
     output_dir.mkdir(parents=True, exist_ok=True)
 

@@ -79,10 +79,20 @@ def rank_pages(
 
     candidates = [idx for idx, score in base_scores if score > 0]
     if not candidates:
-        candidates = [idx for idx, _ in sorted(base_scores, key=lambda x: x[1], reverse=True)[: embed_settings.max_pages]]
+        candidates = [
+            idx
+            for idx, _ in sorted(base_scores, key=lambda x: x[1], reverse=True)[
+                : embed_settings.max_pages
+            ]
+        ]
 
     if len(candidates) > embed_settings.max_pages:
-        candidates = [idx for idx, _ in sorted(base_scores, key=lambda x: x[1], reverse=True)[: embed_settings.max_pages]]
+        candidates = [
+            idx
+            for idx, _ in sorted(base_scores, key=lambda x: x[1], reverse=True)[
+                : embed_settings.max_pages
+            ]
+        ]
 
     sim_scores: dict[int, float] = {}
     if embed_settings.enabled:
@@ -109,6 +119,7 @@ def select_pages(
     embed_store: EmbeddingStore,
     embed_settings: EmbeddingSettings,
 ) -> list[int]:
+    toc_pages = {idx for idx, text in enumerate(page_texts) if is_toc_page(text)}
     ranked = rank_pages(page_texts, config, embed_store, embed_settings)
     selected = [idx for idx, score in ranked[: config.top_k] if score > 0]
 
@@ -121,6 +132,7 @@ def select_pages(
         end = min(len(page_texts), idx + config.window + 1)
         expanded.update(range(start, end))
 
+    expanded.difference_update(toc_pages)
     return sorted(expanded)
 
 
@@ -138,7 +150,14 @@ SECTION_CONFIGS = {
     "metadata": SectionConfig(
         name="metadata",
         query="technical report project name company name location country region report date effective date",
-        keywords=["technical report", "project", "company", "location", "effective date", "report date"],
+        keywords=[
+            "technical report",
+            "project",
+            "company",
+            "location",
+            "effective date",
+            "report date",
+        ],
         table_keywords=[],
         top_k=3,
         window=0,
@@ -150,9 +169,22 @@ SECTION_CONFIGS = {
     "resources": SectionConfig(
         name="resources",
         query="mineral resources measured indicated inferred tonnes grade contained metal table",
-        keywords=["mineral resource", "mineral resources", "resource estimate", "measured", "indicated", "inferred"],
+        keywords=[
+            "mineral resource",
+            "mineral resources",
+            "resource estimate",
+            "resource statement",
+            "measured",
+            "indicated",
+            "inferred",
+            "measured and indicated",
+            "measured + indicated",
+            "tonnes",
+            "grade",
+            "contained",
+        ],
         table_keywords=["table"],
-        top_k=5,
+        top_k=6,
         window=1,
         keyword_weight=0.6,
         table_weight=1.2,
@@ -162,9 +194,22 @@ SECTION_CONFIGS = {
     "reserves": SectionConfig(
         name="reserves",
         query="mineral reserves proven probable tonnes grade contained metal table",
-        keywords=["mineral reserve", "mineral reserves", "reserve estimate", "proven", "probable"],
+        keywords=[
+            "mineral reserve",
+            "mineral reserves",
+            "reserve estimate",
+            "reserve statement",
+            "proven",
+            "probable",
+            "proven and probable",
+            "proven + probable",
+            "p&p",
+            "tonnes",
+            "grade",
+            "contained",
+        ],
         table_keywords=["table"],
-        top_k=5,
+        top_k=6,
         window=1,
         keyword_weight=0.7,
         table_weight=1.4,
@@ -173,12 +218,14 @@ SECTION_CONFIGS = {
     ),
     "economics": SectionConfig(
         name="economics",
-        query="capital cost operating cost capex opex capital and operating costs",
+        query="capital cost operating cost capex opex capital and operating costs npv irr cash flow payback",
         keywords=[
             "capital cost",
             "capital costs",
+            "capital expenditure",
             "operating cost",
             "operating costs",
+            "operating expenditure",
             "capital and operating costs",
             "capex",
             "opex",
@@ -186,9 +233,15 @@ SECTION_CONFIGS = {
             "irr",
             "economic",
             "sustaining capital",
+            "initial capital",
+            "total capital",
+            "cash flow",
+            "payback",
+            "life of mine",
+            "mine life",
         ],
         table_keywords=["table"],
-        top_k=5,
+        top_k=6,
         window=1,
         keyword_weight=0.7,
         table_weight=1.2,
@@ -224,7 +277,13 @@ FALLBACK_SECTION_CONFIGS = {
     "reserves": SectionConfig(
         name="reserves",
         query="reserve conclusions mineral reserves proven probable",
-        keywords=["reserve conclusions", "mineral reserves", "reserve estimate", "proven", "probable"],
+        keywords=[
+            "reserve conclusions",
+            "mineral reserves",
+            "reserve estimate",
+            "proven",
+            "probable",
+        ],
         table_keywords=[],
         top_k=8,
         window=2,

@@ -8,8 +8,12 @@ SRC = ROOT / "src"
 if str(SRC) not in sys.path:
     sys.path.insert(0, str(SRC))
 
-from pipeline.run import main
+
+def _main() -> None:
+    from pipeline.run import main
+
+    main()
 
 
 if __name__ == "__main__":
-    main()
+    _main()

@@ -1,8 +1,7 @@
 import hashlib
 import re
 from pathlib import Path
-from typing import Iterable, Sequence
-
+from typing import Sequence
 
 KEYWORDS = [
     "mineral resource",
@@ -30,6 +29,24 @@ TOC_MARKERS = [
     "contents",
     "list of tables",
     "list of figures",
+]
+
+NO_RESERVES_PATTERNS = [
+    re.compile(r"no (current )?mineral reserve", re.I),
+    re.compile(r"no reserves conforming", re.I),
+    re.compile(r"no reserves (have been )?estimated", re.I),
+    re.compile(r"no reserve estimates", re.I),
+    re.compile(r"no mineral resource or mineral reserve", re.I),
+    re.compile(r"no reserves reported", re.I),
+]
+
+NO_ECONOMICS_PATTERNS = [
+    re.compile(r"capital and operating costs? .*not.*determined", re.I),
+    re.compile(r"capital costs? .*not.*determined", re.I),
+    re.compile(r"operating costs? .*not.*determined", re.I),
+    re.compile(r"not at a state where .*costs are determined", re.I),
+    re.compile(r"no economic (analysis|assessment|study)", re.I),
+    re.compile(r"economic (analysis|assessment|study) has not been completed", re.I),
 ]
 
 
@@ -64,6 +81,18 @@ def find_table_pages(page_texts: Sequence[str], keywords: Sequence[str]) -> set[
     return hits
 
 
+def find_pages_with_patterns(
+    page_texts: Sequence[str], patterns: Sequence[re.Pattern[str]]
+) -> list[int]:
+    hits: list[int] = []
+    if not patterns:
+        return hits
+    for idx, text in enumerate(page_texts):
+        if any(pattern.search(text) for pattern in patterns):
+            hits.append(idx + 1)
+    return hits
+
+
 def build_llm_context(page_texts: Sequence[str], window: int = 1) -> str:
     if not page_texts:
         return ""
@@ -76,7 +105,13 @@ def build_llm_context(page_texts: Sequence[str], window: int = 1) -> str:
         if idx not in toc_pages:
             selected_pages.add(idx)
 
-    meta_keywords = ["summary", "executive summary", "project description", "property description", "location"]
+    meta_keywords = [
+        "summary",
+        "executive summary",
+        "project description",
+        "property description",
+        "location",
+    ]
     selected_pages.update(find_pages_with_keywords(page_texts, meta_keywords))
 
     resource_keywords = ["mineral resource", "resource estimate", "resources"]
@@ -129,14 +164,64 @@ def extract_relevant_sections(text: str, window: int = 20) -> str:
     return "\n".join(cleaned)
 
 
+def extract_relevant_page_snippets(text: str, keywords: Sequence[str], window: int = 12) -> str:
+    if not text or not keywords:
+        return text
+
+    parts = re.split(r"\n\n(?=Page \d+:)", text)
+    kept_parts: list[str] = []
+    keyword_set = [kw.lower() for kw in keywords if kw]
+
+    for part in parts:
+        lines = part.splitlines()
+        if not lines:
+            continue
+        header = lines[0]
+        body = lines[1:]
+        if not body:
+            continue
+
+        hit_indices = []
+        for idx, line in enumerate(body):
+            lower = line.lower()
+            if any(kw in lower for kw in keyword_set):
+                hit_indices.append(idx)
+
+        if not hit_indices:
+            continue
+
+        keep_indices: set[int] = set()
+        for idx in hit_indices:
+            start = max(0, idx - 3)
+            end = min(len(body), idx + window)
+            keep_indices.update(range(start, end))
+
+        seen: set[str] = set()
+        snippet: list[str] = []
+        for idx in sorted(keep_indices):
+            line = body[idx]
+            key = normalize_whitespace(line)
+            if not key or key in seen:
+                continue
+            seen.add(key)
+            snippet.append(line)
+
+        if snippet:
+            kept_parts.append("\n".join([header] + snippet))
+
+    if kept_parts:
+        return "\n\n".join(kept_parts)
+    return text
+
+
 def clamp_text(text: str, max_chars: int) -> str:
     if len(text) <= max_chars:
         return text
     return text[:max_chars]
 
 
-def any_value(*values: Iterable[str | None]) -> bool:
-    return any(v for v in values)
+def any_value(*values: object | None) -> bool:
+    return any(v is not None and v != "" for v in values)
 
 
 def file_sha256(path: Path, chunk_size: int = 1024 * 1024) -> str:

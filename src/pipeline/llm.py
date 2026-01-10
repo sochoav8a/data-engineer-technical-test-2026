@@ -2,13 +2,14 @@ from __future__ import annotations
 
 import json
 import re
-from typing import Any, Type
+from typing import Any, Type, TypeVar
 
 from pydantic import BaseModel
 
 from .genai_client import extract_text, get_genai_client
 from .models import ExtractionResult
 
+T = TypeVar("T", bound=BaseModel)
 
 SYSTEM_PROMPT = """You are a data extraction engine for NI 43-101 mining technical reports.
 Extract ONLY the fields in the provided JSON schema. Return valid JSON and nothing else.
@@ -17,6 +18,7 @@ Do not convert units or scale values; keep value as shown in the document.
 Fill `raw` with the original string and `unit` with the unit text if present.
 Use source_pages only from Page N references in the provided context. Ignore table of contents page numbers.
 Use the document content only; do not guess.
+Tables may appear as CSV/TSV text; use the headers and numeric rows to extract values.
 """
 
 SECTION_TASKS = {
@@ -67,7 +69,9 @@ def _build_prompt(document_text: str, schema: dict[str, Any], task: str | None =
     )
 
 
-def _call_gemini(document_text: str, model_name: str, api_key: str, schema: dict[str, Any], task: str | None) -> dict[str, Any]:
+def _call_gemini(
+    document_text: str, model_name: str, api_key: str, schema: dict[str, Any], task: str | None
+) -> dict[str, Any]:
     client = get_genai_client(api_key)
     prompt = _build_prompt(document_text, schema, task)
 
@@ -84,9 +88,9 @@ def extract_with_schema(
     model_name: str,
     api_key: str | None,
     provider: str,
-    schema_model: Type[BaseModel],
+    schema_model: Type[T],
     task: str | None = None,
-) -> BaseModel:
+) -> T:
     if provider == "mock":
         return schema_model()
     if provider != "gemini":
@@ -99,7 +103,9 @@ def extract_with_schema(
     return schema_model.model_validate(data)
 
 
-def extract_structured(document_text: str, model_name: str, api_key: str | None, provider: str) -> ExtractionResult:
+def extract_structured(
+    document_text: str, model_name: str, api_key: str | None, provider: str
+) -> ExtractionResult:
     return extract_with_schema(
         document_text=document_text,
         model_name=model_name,

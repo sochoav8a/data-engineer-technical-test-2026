@@ -25,17 +25,25 @@ def _count_rows(rows: list[dict[str, str]], key: str) -> Counter:
 def _economics_with_values(rows: list[dict[str, str]]) -> Counter:
     counter = Counter()
     for row in rows:
-        has_values = any(row.get(k) for k in ["capex_value", "opex_value", "npv_value", "irr_value"])
+        has_values = any(
+            row.get(k) for k in ["capex_value", "opex_value", "npv_value", "irr_value"]
+        )
         if has_values:
             counter[row.get("source_pdf") or ""] += 1
     return counter
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Generate coverage report from run_manifest.json and CSV outputs")
-    parser.add_argument("--manifest", default="output/run_manifest.json", help="Path to run_manifest.json")
+    parser = argparse.ArgumentParser(
+        description="Generate coverage report from run_manifest.json and CSV outputs"
+    )
+    parser.add_argument(
+        "--manifest", default="output/run_manifest.json", help="Path to run_manifest.json"
+    )
     parser.add_argument("--csv-dir", default="output", help="Directory with CSV outputs")
-    parser.add_argument("--output", default="output/coverage_report.md", help="Path to write markdown report")
+    parser.add_argument(
+        "--output", default="output/coverage_report.md", help="Path to write markdown report"
+    )
     args = parser.parse_args()
 
     manifest_path = Path(args.manifest)
@@ -82,8 +90,8 @@ def main() -> None:
         [
             "",
             "## Per PDF",
-            "| PDF | resources | reserves | economics | econ_values | warnings | time_sec | page_count | cache_hit |",
-            "| --- | --- | --- | --- | --- | --- | --- | --- | --- |",
+            "| PDF | resources | reserves | economics | econ_values | warnings | no_reserves | no_econ | time_sec | page_count | cache_hit |",
+            "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |",
         ]
     )
 
@@ -92,14 +100,18 @@ def main() -> None:
         durations = metric.get("durations_sec", {})
         total = durations.get("total")
         warnings = metric.get("warnings") or []
+        no_reserves = "yes" if metric.get("no_reserves_pages") else ""
+        no_econ = "yes" if metric.get("no_economics_pages") else ""
         lines.append(
-            "| {} | {} | {} | {} | {} | {} | {} | {} | {} |".format(
+            "| {} | {} | {} | {} | {} | {} | {} | {} | {} | {} | {} |".format(
                 pdf,
                 resources_counts.get(pdf, 0),
                 reserves_counts.get(pdf, 0),
                 economics_counts.get(pdf, 0),
                 economics_with_values.get(pdf, 0),
                 len(warnings),
+                no_reserves,
+                no_econ,
                 total,
                 metric.get("page_count"),
                 metric.get("cache_hit"),

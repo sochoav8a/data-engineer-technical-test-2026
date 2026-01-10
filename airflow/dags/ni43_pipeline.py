@@ -4,8 +4,9 @@ import os
 from datetime import datetime
 from pathlib import Path
 
-from airflow import DAG
 from airflow.operators.python import PythonOperator
+
+from airflow import DAG
 
 
 def _run_pipeline() -> None:

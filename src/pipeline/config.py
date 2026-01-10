@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, field
 import os
+from dataclasses import dataclass, field
 
 
 @dataclass
@@ -21,7 +21,9 @@ class Settings:
     log_level: str = "INFO"
     log_dir: str | None = None
     dry_run: bool = False
-    sections: list[str] = field(default_factory=lambda: ["metadata", "resources", "reserves", "economics"])
+    sections: list[str] = field(
+        default_factory=lambda: ["metadata", "resources", "reserves", "economics"]
+    )
 
     # Embeddings
     embeddings_enabled: bool = True
@@ -53,16 +55,24 @@ class Settings:
 
         sections_env = os.getenv("SECTIONS")
         if sections_env:
-            self.sections = [section.strip() for section in sections_env.split(",") if section.strip()]
+            self.sections = [
+                section.strip() for section in sections_env.split(",") if section.strip()
+            ]
 
-        self.embeddings_enabled = os.getenv("EMBEDDINGS_ENABLED", str(self.embeddings_enabled)).lower() in [
+        self.embeddings_enabled = os.getenv(
+            "EMBEDDINGS_ENABLED", str(self.embeddings_enabled)
+        ).lower() in [
             "1",
             "true",
             "yes",
         ]
         self.embedding_model = os.getenv("EMBEDDING_MODEL", self.embedding_model)
-        self.embedding_max_chars = int(os.getenv("EMBEDDING_MAX_CHARS", str(self.embedding_max_chars)))
-        self.embedding_max_pages = int(os.getenv("EMBEDDING_MAX_PAGES", str(self.embedding_max_pages)))
+        self.embedding_max_chars = int(
+            os.getenv("EMBEDDING_MAX_CHARS", str(self.embedding_max_chars))
+        )
+        self.embedding_max_pages = int(
+            os.getenv("EMBEDDING_MAX_PAGES", str(self.embedding_max_pages))
+        )
 
         self.retries_enabled = os.getenv("RETRIES_ENABLED", str(self.retries_enabled)).lower() in [
             "1",
