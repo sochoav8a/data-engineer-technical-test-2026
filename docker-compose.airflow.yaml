@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  airflow-webserver:
+    image: apache/airflow:2.8.3
+    container_name: airflow-webserver
+    environment:
+      - AIRFLOW__CORE__EXECUTOR=SequentialExecutor
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=sqlite:////opt/airflow/airflow.db
+      - REPO_ROOT=/opt/airflow/repo
+    volumes:
+      - ./:/opt/airflow/repo
+      - ./airflow/dags:/opt/airflow/dags
+    ports:
+      - "8080:8080"
+    command: bash -c "pip install -r /opt/airflow/repo/airflow/requirements.txt && airflow db migrate && airflow webserver"
+
+  airflow-scheduler:
+    image: apache/airflow:2.8.3
+    container_name: airflow-scheduler
+    environment:
+      - AIRFLOW__CORE__EXECUTOR=SequentialExecutor
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=sqlite:////opt/airflow/airflow.db
+      - REPO_ROOT=/opt/airflow/repo
+    volumes:
+      - ./:/opt/airflow/repo
+      - ./airflow/dags:/opt/airflow/dags
+    command: bash -c "pip install -r /opt/airflow/repo/airflow/requirements.txt && airflow scheduler"
+    depends_on:
+      - airflow-webserver

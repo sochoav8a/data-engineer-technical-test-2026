@@ -1,0 +1,7 @@
+google-genai
+pydantic
+python-dotenv
+llama-parse
+llama-index-core
+pdfplumber
+camelot-py
