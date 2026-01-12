@@ -16,7 +16,7 @@ __pycache__/
 # OS
 .DS_Store
 
-data/
+
 
 .ruff_cache
 .mypy_cache
