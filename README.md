@@ -30,3 +30,5 @@ python scripts/estimate_cost.py --manifest output/run_manifest.json --output-dir
 
 
 La documentación de los procesos se pueden encontrar en la carpeta docs/
+
+Los csv extraídos se pueden encontrar en la carpeta output
