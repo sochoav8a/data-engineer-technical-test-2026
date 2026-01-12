@@ -1,0 +1,7 @@
+source_pdf,category,metal,tonnes_value,tonnes_unit,grade_value,grade_unit,contained_value,contained_unit,source_pages
+sedar__000003116_Aris_Mining_Corporation__technical-report__878C2FBC.pdf,Proven,Gold,1515.0,kt,12.25,g/t,597.0,koz,"10, 40"
+sedar__000003116_Aris_Mining_Corporation__technical-report__878C2FBC.pdf,Probable,Gold,2017.0,kt,11.16,g/t,723.0,koz,"10, 40"
+sedar__000003116_Aris_Mining_Corporation__technical-report__878C2FBC.pdf,Proven + Probable,Gold,3531.0,kt,11.63,g/t,1320.0,koz,"10, 40"
+sedar__Mineros_SA__technical-report__2B2256D4.pdf,Proven,Au,86.0,Mm3,71.0,mg/m3,195.0,koz,"13, 25, 119"
+sedar__Mineros_SA__technical-report__2B2256D4.pdf,Probable,Au,438.0,Mm3,82.0,mg/m3,1159.0,koz,"13, 25, 119"
+sedar__Mineros_SA__technical-report__2B2256D4.pdf,Total Proven and Probable,Au,524.0,Mm3,80.0,mg/m3,1355.0,koz,"13, 25, 119"

@@ -1,0 +1,310 @@
+{
+  "metadata": {
+    "project_name": "Titiribi Project",
+    "company_name": "Sunward",
+    "location_country": "Colombia",
+    "location_region": null,
+    "report_date": "2013-09-01",
+    "report_date_raw": "September 2013",
+    "source_pdf": "sedar__Sunward_Resources_Ltd__technical-report__278C5D9A.pdf"
+  },
+  "resources": [
+    {
+      "category": "Measured",
+      "tonnes": {
+        "value": 51.6,
+        "unit": "Million Tonnes",
+        "raw": "51.6"
+      },
+      "grade": {
+        "value": 0.492,
+        "unit": "g/t",
+        "raw": "0.492"
+      },
+      "metal": "Au",
+      "contained_metal": {
+        "value": 0.82,
+        "unit": "million oz",
+        "raw": "0.82"
+      },
+      "source_pages": "16, 134"
+    },
+    {
+      "category": "Measured",
+      "tonnes": {
+        "value": 51.6,
+        "unit": "Million Tonnes",
+        "raw": "51.6"
+      },
+      "grade": {
+        "value": 0.172,
+        "unit": "%",
+        "raw": "0.172"
+      },
+      "metal": "Cu",
+      "contained_metal": {
+        "value": 195.1,
+        "unit": "million lbs",
+        "raw": "195.1"
+      },
+      "source_pages": "16, 134"
+    },
+    {
+      "category": "Indicated",
+      "tonnes": {
+        "value": 132.4,
+        "unit": "Million Tonnes",
+        "raw": "132.4"
+      },
+      "grade": {
+        "value": 0.483,
+        "unit": "g/t",
+        "raw": "0.483"
+      },
+      "metal": "Au",
+      "contained_metal": {
+        "value": 2.06,
+        "unit": "million oz",
+        "raw": "2.06"
+      },
+      "source_pages": "16, 134"
+    },
+    {
+      "category": "Indicated",
+      "tonnes": {
+        "value": 132.4,
+        "unit": "Million Tonnes",
+        "raw": "132.4"
+      },
+      "grade": {
+        "value": 0.157,
+        "unit": "%",
+        "raw": "0.157"
+      },
+      "metal": "Cu",
+      "contained_metal": {
+        "value": 459.3,
+        "unit": "million lbs",
+        "raw": "459.3"
+      },
+      "source_pages": "16, 134"
+    },
+    {
+      "category": "Indicated",
+      "tonnes": {
+        "value": 62.1,
+        "unit": "Million Tonnes",
+        "raw": "62.1"
+      },
+      "grade": {
+        "value": 0.484,
+        "unit": "g/t",
+        "raw": "0.484"
+      },
+      "metal": "Au",
+      "contained_metal": {
+        "value": 0.97,
+        "unit": "million oz",
+        "raw": "0.97"
+      },
+      "source_pages": "16, 134"
+    },
+    {
+      "category": "Indicated",
+      "tonnes": {
+        "value": 39.7,
+        "unit": "Million Tonnes",
+        "raw": "39.7"
+      },
+      "grade": {
+        "value": 0.618,
+        "unit": "g/t",
+        "raw": "0.618"
+      },
+      "metal": "Au",
+      "contained_metal": {
+        "value": 0.79,
+        "unit": "million oz",
+        "raw": "0.79"
+      },
+      "source_pages": "16, 134"
+    },
+    {
+      "category": "Measured + Indicated",
+      "tonnes": {
+        "value": 285.8,
+        "unit": "Million Tonnes",
+        "raw": "285.8"
+      },
+      "grade": {
+        "value": 0.5,
+        "unit": "g/t",
+        "raw": "0.50"
+      },
+      "metal": "Au",
+      "contained_metal": {
+        "value": 4.63,
+        "unit": "million oz",
+        "raw": "4.63"
+      },
+      "source_pages": "16, 134"
+    },
+    {
+      "category": "Measured + Indicated",
+      "tonnes": {
+        "value": 285.8,
+        "unit": "Million Tonnes",
+        "raw": "285.8"
+      },
+      "grade": {
+        "value": null,
+        "unit": "%",
+        "raw": "-"
+      },
+      "metal": "Cu",
+      "contained_metal": {
+        "value": 654.4,
+        "unit": "million lbs",
+        "raw": "654.4"
+      },
+      "source_pages": "16, 134"
+    },
+    {
+      "category": "Inferred",
+      "tonnes": {
+        "value": 153.0,
+        "unit": "Million Tonnes",
+        "raw": "153.0"
+      },
+      "grade": {
+        "value": 0.573,
+        "unit": "g/t",
+        "raw": "0.573"
+      },
+      "metal": "Au",
+      "contained_metal": {
+        "value": 2.82,
+        "unit": "million oz",
+        "raw": "2.82"
+      },
+      "source_pages": "16, 135"
+    },
+    {
+      "category": "Inferred",
+      "tonnes": {
+        "value": 153.0,
+        "unit": "Million Tonnes",
+        "raw": "153.0"
+      },
+      "grade": {
+        "value": 0.064,
+        "unit": "%",
+        "raw": "0.064"
+      },
+      "metal": "Cu",
+      "contained_metal": {
+        "value": 216.3,
+        "unit": "million lbs",
+        "raw": "216.3"
+      },
+      "source_pages": "16, 135"
+    },
+    {
+      "category": "Inferred",
+      "tonnes": {
+        "value": 100.2,
+        "unit": "Million Tonnes",
+        "raw": "100.2"
+      },
+      "grade": {
+        "value": 0.467,
+        "unit": "g/t",
+        "raw": "0.467"
+      },
+      "metal": "Au",
+      "contained_metal": {
+        "value": 1.51,
+        "unit": "million oz",
+        "raw": "1.51"
+      },
+      "source_pages": "16, 135"
+    },
+    {
+      "category": "Inferred",
+      "tonnes": {
+        "value": 96.2,
+        "unit": "Million Tonnes",
+        "raw": "96.2"
+      },
+      "grade": {
+        "value": 0.543,
+        "unit": "g/t",
+        "raw": "0.543"
+      },
+      "metal": "Au",
+      "contained_metal": {
+        "value": 1.68,
+        "unit": "million oz",
+        "raw": "1.68"
+      },
+      "source_pages": "16, 135"
+    },
+    {
+      "category": "Inferred",
+      "tonnes": {
+        "value": 349.4,
+        "unit": "Million Tonnes",
+        "raw": "349.4"
+      },
+      "grade": {
+        "value": 0.53,
+        "unit": "g/t",
+        "raw": "0.53"
+      },
+      "metal": "Au",
+      "contained_metal": {
+        "value": 6.01,
+        "unit": "million oz",
+        "raw": "6.01"
+      },
+      "source_pages": "16, 135"
+    },
+    {
+      "category": "Inferred",
+      "tonnes": {
+        "value": 349.4,
+        "unit": "Million Tonnes",
+        "raw": "349.4"
+      },
+      "grade": {
+        "value": null,
+        "unit": "%",
+        "raw": "-"
+      },
+      "metal": "Cu",
+      "contained_metal": {
+        "value": 216.3,
+        "unit": "million lbs",
+        "raw": "216.3"
+      },
+      "source_pages": "16, 135"
+    }
+  ],
+  "reserves": [],
+  "economics": {
+    "capex": null,
+    "opex": null,
+    "npv": null,
+    "irr": null,
+    "currency": null,
+    "source_pages": "147, 148"
+  },
+  "confidence": 0.5,
+  "warnings": [
+    "reserves missing; retries disabled",
+    "no reserves reported in document (pages: 15, 136, 138)",
+    "economics missing; retries disabled",
+    "economics not reported in document (pages: 147)",
+    "economics missing numeric values"
+  ]
+}

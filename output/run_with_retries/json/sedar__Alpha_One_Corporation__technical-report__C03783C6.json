@@ -1,0 +1,110 @@
+{
+  "metadata": {
+    "project_name": "Guadalupe Project",
+    "company_name": "Solvista Gold Corporation",
+    "location_country": "Colombia",
+    "location_region": "Antioquia",
+    "report_date": "2011-02-28",
+    "report_date_raw": "February 28, 2011",
+    "source_pdf": "sedar__Alpha_One_Corporation__technical-report__C03783C6.pdf"
+  },
+  "resources": [
+    {
+      "category": "Reserve",
+      "tonnes": {
+        "value": 500.0,
+        "unit": "(000)",
+        "raw": "500"
+      },
+      "grade": {
+        "value": null,
+        "unit": null,
+        "raw": "N/A"
+      },
+      "metal": "Cu",
+      "contained_metal": {
+        "value": null,
+        "unit": null,
+        "raw": null
+      },
+      "source_pages": "Page 52"
+    },
+    {
+      "category": "Resource Potential",
+      "tonnes": {
+        "value": null,
+        "unit": "(000)",
+        "raw": "495-1,000"
+      },
+      "grade": {
+        "value": null,
+        "unit": "% Cu",
+        "raw": "2.0-3.0 eq"
+      },
+      "metal": "Cu",
+      "contained_metal": {
+        "value": null,
+        "unit": null,
+        "raw": null
+      },
+      "source_pages": "Page 52"
+    },
+    {
+      "category": "Resource Potential",
+      "tonnes": {
+        "value": null,
+        "unit": "(000)",
+        "raw": "100-700"
+      },
+      "grade": {
+        "value": null,
+        "unit": "% Cu",
+        "raw": "2.0-3.0 eq"
+      },
+      "metal": "Cu",
+      "contained_metal": {
+        "value": null,
+        "unit": null,
+        "raw": null
+      },
+      "source_pages": "Page 52"
+    },
+    {
+      "category": "Resource",
+      "tonnes": {
+        "value": 27186.0,
+        "unit": "(000)",
+        "raw": "27,186"
+      },
+      "grade": {
+        "value": 1.88,
+        "unit": "% Cu",
+        "raw": "1.88"
+      },
+      "metal": "Cu",
+      "contained_metal": {
+        "value": null,
+        "unit": null,
+        "raw": null
+      },
+      "source_pages": "Page 52"
+    }
+  ],
+  "reserves": [],
+  "economics": {
+    "capex": {
+      "value": 1435000.0,
+      "unit": null,
+      "raw": "555,000; 880,000"
+    },
+    "opex": null,
+    "npv": null,
+    "irr": null,
+    "currency": "US$",
+    "source_pages": "8, 57, 58"
+  },
+  "confidence": 0.75,
+  "warnings": [
+    "reserve category filtered: Reserve"
+  ]
+}

@@ -1,0 +1,638 @@
+{
+  "run_id": "2026-01-10T12:03:11.796114+00:00",
+  "started_at": "2026-01-10T12:03:11.796114+00:00",
+  "duration_sec": 344.287,
+  "settings": {
+    "data_dir": "data",
+    "output_dir": "output",
+    "sqlite_path": "output/extractions.db",
+    "model_name": "models/gemini-flash-latest",
+    "gemini_api_key": "set",
+    "llama_parse_api_key": "set",
+    "extraction_mode": "smart",
+    "extraction_strategy": "two_stage",
+    "max_chars": 350000,
+    "llm_provider": "gemini",
+    "page_window": 1,
+    "max_workers": 1,
+    "log_level": "INFO",
+    "log_dir": null,
+    "dry_run": false,
+    "sections": [
+      "metadata",
+      "resources",
+      "reserves",
+      "economics"
+    ],
+    "embeddings_enabled": false,
+    "embedding_model": "models/text-embedding-004",
+    "embedding_max_chars": 4000,
+    "embedding_max_pages": 60,
+    "retries_enabled": false,
+    "retry_model": "",
+    "use_retry_model": false
+  },
+  "pdfs": [
+    {
+      "source_pdf": "sedar__000003116_Aris_Mining_Corporation__technical-report__878C2FBC.pdf",
+      "sha256": "e2c51d1950082272fe5f8c346efa1ef7da8fdc774c36c9ba5935aea23be985dc",
+      "sections": [
+        "economics",
+        "metadata",
+        "reserves",
+        "resources"
+      ],
+      "page_count": 61,
+      "cache_hit": false,
+      "selected_pages": {
+        "metadata": [
+          0,
+          13,
+          59
+        ],
+        "resources": [
+          5,
+          6,
+          7,
+          8,
+          9,
+          31,
+          32,
+          33,
+          35,
+          36,
+          37,
+          38,
+          39
+        ],
+        "reserves": [
+          7,
+          8,
+          9,
+          10,
+          31,
+          32,
+          33,
+          36,
+          37,
+          38,
+          39,
+          40
+        ],
+        "economics": [
+          3,
+          4,
+          5,
+          12,
+          13,
+          14,
+          35,
+          36,
+          37,
+          38,
+          39,
+          49,
+          50,
+          51,
+          52
+        ]
+      },
+      "table_counts": {
+        "resources": 62,
+        "reserves": 60,
+        "economics": 57
+      },
+      "table_selected": {
+        "resources": 8,
+        "reserves": 8,
+        "economics": 8
+      },
+      "no_reserves_pages": [],
+      "no_economics_pages": [],
+      "durations_sec": {
+        "page_extract": 0.805,
+        "selection": {
+          "metadata": 0.014,
+          "resources": 0.013,
+          "reserves": 0.013,
+          "economics": 0.014
+        },
+        "table_extract": {
+          "resources": 8.249,
+          "reserves": 7.025,
+          "economics": 8.27
+        },
+        "llm": {
+          "metadata": 3.381,
+          "resources": 6.822,
+          "reserves": 6.297,
+          "economics": 21.599
+        },
+        "total": 62.523
+      },
+      "llm_input_chars": {
+        "metadata": 6573,
+        "resources": 47005,
+        "reserves": 46675,
+        "economics": 54908
+      },
+      "warnings": [],
+      "confidence": 1.0,
+      "resources_count": 4,
+      "reserves_count": 3,
+      "resource_empty_rows": 0,
+      "reserve_empty_rows": 0,
+      "economics_has_values": true,
+      "metadata_filled": true
+    },
+    {
+      "source_pdf": "sedar__Alpha_One_Corporation__technical-report__C03783C6.pdf",
+      "sha256": "d4054c576a40c664d7f5ab84ef1d7fbeda06015bfee20fdf8d2b517a33a0b071",
+      "sections": [
+        "economics",
+        "metadata",
+        "reserves",
+        "resources"
+      ],
+      "page_count": 65,
+      "cache_hit": false,
+      "selected_pages": {
+        "metadata": [
+          15,
+          45,
+          47
+        ],
+        "resources": [
+          6,
+          7,
+          8,
+          16,
+          17,
+          18,
+          40,
+          41,
+          42,
+          48,
+          49,
+          50,
+          51,
+          52,
+          56,
+          57,
+          58
+        ],
+        "reserves": [
+          6,
+          7,
+          8,
+          16,
+          17,
+          18,
+          40,
+          41,
+          42,
+          48,
+          49,
+          50,
+          51,
+          52,
+          56,
+          57,
+          58
+        ],
+        "economics": [
+          6,
+          7,
+          8,
+          14,
+          15,
+          16,
+          17,
+          18,
+          40,
+          41,
+          42,
+          48,
+          49,
+          50,
+          56,
+          57,
+          58
+        ]
+      },
+      "table_counts": {
+        "resources": 19,
+        "reserves": 19,
+        "economics": 18
+      },
+      "table_selected": {
+        "resources": 8,
+        "reserves": 8,
+        "economics": 8
+      },
+      "no_reserves_pages": [],
+      "no_economics_pages": [],
+      "durations_sec": {
+        "page_extract": 1.059,
+        "selection": {
+          "metadata": 0.01,
+          "resources": 0.01,
+          "reserves": 0.01,
+          "economics": 0.011
+        },
+        "table_extract": {
+          "resources": 7.755,
+          "reserves": 8.213,
+          "economics": 8.285
+        },
+        "llm": {
+          "metadata": 3.87,
+          "resources": 10.485,
+          "reserves": 5.979,
+          "economics": 14.115
+        },
+        "total": 59.82
+      },
+      "llm_input_chars": {
+        "metadata": 3730,
+        "resources": 18385,
+        "reserves": 18385,
+        "economics": 46870
+      },
+      "warnings": [
+        "reserve category filtered: Reserve"
+      ],
+      "confidence": 0.75,
+      "resources_count": 4,
+      "reserves_count": 0,
+      "resource_empty_rows": 0,
+      "reserve_empty_rows": 0,
+      "economics_has_values": true,
+      "metadata_filled": true
+    },
+    {
+      "source_pdf": "sedar__Colombia_Crest_Gold_Corp__technical-report__D11891E2.pdf",
+      "sha256": "1809ee0764fdf94c212b7c1c0872ab18d1c407fbbd48144ddfec5bcb24fa9875",
+      "sections": [
+        "economics",
+        "metadata",
+        "reserves",
+        "resources"
+      ],
+      "page_count": 84,
+      "cache_hit": false,
+      "selected_pages": {
+        "metadata": [
+          8,
+          13,
+          23
+        ],
+        "resources": [
+          19,
+          20,
+          21,
+          26,
+          27,
+          28,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          50,
+          51,
+          52,
+          53
+        ],
+        "reserves": [
+          2,
+          3,
+          4,
+          9,
+          10,
+          11,
+          12,
+          13,
+          38,
+          39,
+          40,
+          41,
+          42,
+          50,
+          51,
+          52
+        ],
+        "economics": [
+          2,
+          3,
+          4,
+          9,
+          10,
+          11,
+          13,
+          14,
+          15,
+          38,
+          39,
+          40,
+          41,
+          42,
+          50,
+          51,
+          52
+        ]
+      },
+      "table_counts": {
+        "resources": 30,
+        "reserves": 34,
+        "economics": 34
+      },
+      "table_selected": {
+        "resources": 8,
+        "reserves": 8,
+        "economics": 8
+      },
+      "no_reserves_pages": [],
+      "no_economics_pages": [],
+      "durations_sec": {
+        "page_extract": 1.031,
+        "selection": {
+          "metadata": 0.012,
+          "resources": 0.012,
+          "reserves": 0.012,
+          "economics": 0.013
+        },
+        "table_extract": {
+          "resources": 12.0,
+          "reserves": 11.298,
+          "economics": 12.418
+        },
+        "llm": {
+          "metadata": 4.314,
+          "resources": 16.798,
+          "reserves": 2.816,
+          "economics": 5.431
+        },
+        "total": 66.176
+      },
+      "llm_input_chars": {
+        "metadata": 7963,
+        "resources": 21052,
+        "reserves": 24288,
+        "economics": 56315
+      },
+      "warnings": [
+        "reserves missing; retries disabled",
+        "economics missing; retries disabled",
+        "economics missing numeric values"
+      ],
+      "confidence": 0.5,
+      "resources_count": 9,
+      "reserves_count": 0,
+      "resource_empty_rows": 0,
+      "reserve_empty_rows": 0,
+      "economics_has_values": false,
+      "metadata_filled": true
+    },
+    {
+      "source_pdf": "sedar__Mineros_SA__technical-report__2B2256D4.pdf",
+      "sha256": "be39364942e2ff92e18839733c39f9f662214a8420c0e53ba9bd08b94199accf",
+      "sections": [
+        "economics",
+        "metadata",
+        "reserves",
+        "resources"
+      ],
+      "page_count": 241,
+      "cache_hit": false,
+      "selected_pages": {
+        "metadata": [
+          32,
+          196,
+          201
+        ],
+        "resources": [
+          21,
+          22,
+          23,
+          24,
+          87,
+          88,
+          89,
+          107,
+          108,
+          109,
+          115,
+          116,
+          117,
+          118
+        ],
+        "reserves": [
+          11,
+          12,
+          13,
+          22,
+          23,
+          24,
+          25,
+          108,
+          109,
+          110,
+          117,
+          118,
+          119,
+          157,
+          158,
+          159
+        ],
+        "economics": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          29,
+          30,
+          31,
+          213,
+          214,
+          215,
+          225,
+          226,
+          227
+        ]
+      },
+      "table_counts": {
+        "resources": 44,
+        "reserves": 39,
+        "economics": 29
+      },
+      "table_selected": {
+        "resources": 8,
+        "reserves": 8,
+        "economics": 8
+      },
+      "no_reserves_pages": [],
+      "no_economics_pages": [],
+      "durations_sec": {
+        "page_extract": 3.019,
+        "selection": {
+          "metadata": 0.044,
+          "resources": 0.048,
+          "reserves": 0.048,
+          "economics": 0.052
+        },
+        "table_extract": {
+          "resources": 9.238,
+          "reserves": 11.186,
+          "economics": 10.74
+        },
+        "llm": {
+          "metadata": 7.199,
+          "resources": 12.381,
+          "reserves": 12.391,
+          "economics": 9.01
+        },
+        "total": 75.408
+      },
+      "llm_input_chars": {
+        "metadata": 10952,
+        "resources": 53560,
+        "reserves": 48560,
+        "economics": 65549
+      },
+      "warnings": [],
+      "confidence": 1.0,
+      "resources_count": 4,
+      "reserves_count": 3,
+      "resource_empty_rows": 0,
+      "reserve_empty_rows": 0,
+      "economics_has_values": true,
+      "metadata_filled": true
+    },
+    {
+      "source_pdf": "sedar__Sunward_Resources_Ltd__technical-report__278C5D9A.pdf",
+      "sha256": "3ab2ad19e5f8748bcc2e209b705624e2d57a9d740e78daec6819f9e53dc2aefc",
+      "sections": [
+        "economics",
+        "metadata",
+        "reserves",
+        "resources"
+      ],
+      "page_count": 187,
+      "cache_hit": false,
+      "selected_pages": {
+        "metadata": [
+          19,
+          121,
+          157
+        ],
+        "resources": [
+          12,
+          13,
+          14,
+          15,
+          16,
+          129,
+          130,
+          131,
+          132,
+          133,
+          134,
+          135,
+          136
+        ],
+        "reserves": [
+          14,
+          15,
+          16,
+          128,
+          129,
+          130,
+          131,
+          132,
+          133,
+          134,
+          135
+        ],
+        "economics": [
+          89,
+          90,
+          91,
+          92,
+          93,
+          131,
+          132,
+          133,
+          145,
+          146,
+          147,
+          160,
+          161,
+          162
+        ]
+      },
+      "table_counts": {
+        "resources": 45,
+        "reserves": 48,
+        "economics": 41
+      },
+      "table_selected": {
+        "resources": 8,
+        "reserves": 8,
+        "economics": 8
+      },
+      "no_reserves_pages": [
+        15,
+        136,
+        138
+      ],
+      "no_economics_pages": [
+        147
+      ],
+      "durations_sec": {
+        "page_extract": 2.567,
+        "selection": {
+          "metadata": 0.028,
+          "resources": 0.032,
+          "reserves": 0.033,
+          "economics": 0.035
+        },
+        "table_extract": {
+          "resources": 11.07,
+          "reserves": 9.036,
+          "economics": 11.621
+        },
+        "llm": {
+          "metadata": 5.086,
+          "resources": 33.278,
+          "reserves": 2.638,
+          "economics": 4.815
+        },
+        "total": 80.276
+      },
+      "llm_input_chars": {
+        "metadata": 8198,
+        "resources": 46005,
+        "reserves": 36410,
+        "economics": 59217
+      },
+      "warnings": [
+        "reserves missing; retries disabled",
+        "no reserves reported in document (pages: 15, 136, 138)",
+        "economics missing; retries disabled",
+        "economics not reported in document (pages: 147)",
+        "economics missing numeric values"
+      ],
+      "confidence": 0.5,
+      "resources_count": 14,
+      "reserves_count": 0,
+      "resource_empty_rows": 0,
+      "reserve_empty_rows": 0,
+      "economics_has_values": false,
+      "metadata_filled": true
+    }
+  ]
+}

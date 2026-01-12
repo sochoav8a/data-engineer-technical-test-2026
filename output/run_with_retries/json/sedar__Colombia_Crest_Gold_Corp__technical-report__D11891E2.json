@@ -1,0 +1,168 @@
+{
+  "metadata": {
+    "project_name": "Fredonia-Venecia",
+    "company_name": null,
+    "location_country": "Colombia",
+    "location_region": "Antioquia",
+    "report_date": "2013-03-30",
+    "report_date_raw": "March 30, 2013",
+    "source_pdf": "sedar__Colombia_Crest_Gold_Corp__technical-report__D11891E2.pdf"
+  },
+  "resources": [
+    {
+      "category": "Measured and Indicated",
+      "tonnes": {
+        "value": 275.4,
+        "unit": "million tonnes",
+        "raw": "275.4 million tonnes"
+      },
+      "grade": {
+        "value": 0.52,
+        "unit": "grams/tonne",
+        "raw": "0.52 grams/tonne gold"
+      },
+      "metal": "Gold",
+      "contained_metal": {
+        "value": 4.58,
+        "unit": "million ounces",
+        "raw": "4.58 million ounces of gold"
+      },
+      "source_pages": "52"
+    },
+    {
+      "category": "Measured and Indicated",
+      "tonnes": {
+        "value": 275.4,
+        "unit": "million tonnes",
+        "raw": "275.4 million tonnes"
+      },
+      "grade": {
+        "value": 0.17,
+        "unit": "%",
+        "raw": "0.17% copper"
+      },
+      "metal": "Copper",
+      "contained_metal": {
+        "value": 615.4,
+        "unit": "million pounds",
+        "raw": "615.4 million pounds of copper"
+      },
+      "source_pages": "52"
+    },
+    {
+      "category": "Inferred",
+      "tonnes": {
+        "value": 359.6,
+        "unit": "million tonnes",
+        "raw": "359.6 million tonnes"
+      },
+      "grade": {
+        "value": 0.56,
+        "unit": "grams/tonne",
+        "raw": "0.56 grams/tonne gold"
+      },
+      "metal": "Gold",
+      "contained_metal": {
+        "value": 6.44,
+        "unit": "million ounces",
+        "raw": "6.44 million ounces of gold"
+      },
+      "source_pages": "52"
+    },
+    {
+      "category": "Inferred",
+      "tonnes": {
+        "value": 359.6,
+        "unit": "million tonnes",
+        "raw": "359.6 million tonnes"
+      },
+      "grade": {
+        "value": 0.09,
+        "unit": "%",
+        "raw": "0.09% copper"
+      },
+      "metal": "Copper",
+      "contained_metal": {
+        "value": 388.5,
+        "unit": "million pounds",
+        "raw": "388.5 million pounds of copper"
+      },
+      "source_pages": "52"
+    },
+    {
+      "category": "Inferred",
+      "tonnes": {
+        "value": 80.0,
+        "unit": "million tonnes",
+        "raw": "80 million tonnes"
+      },
+      "grade": {
+        "value": 0.62,
+        "unit": "g/t",
+        "raw": "0.62 g/t Au"
+      },
+      "metal": "Gold",
+      "contained_metal": {
+        "value": 1600000.0,
+        "unit": "oz",
+        "raw": "1,600,000oz of gold"
+      },
+      "source_pages": "53, 54"
+    },
+    {
+      "category": "Inferred",
+      "tonnes": {
+        "value": 80.0,
+        "unit": "million tonnes",
+        "raw": "80 million tonnes"
+      },
+      "grade": {
+        "value": 0.24,
+        "unit": "%",
+        "raw": "0.24% Cu"
+      },
+      "metal": "Copper",
+      "contained_metal": {
+        "value": 419.0,
+        "unit": "million pounds",
+        "raw": "419 million pounds of copper"
+      },
+      "source_pages": "53, 54"
+    },
+    {
+      "category": "Inferred",
+      "tonnes": {
+        "value": 80.0,
+        "unit": "million tonnes",
+        "raw": "80 million tonnes"
+      },
+      "grade": {
+        "value": 1.0,
+        "unit": "g/t",
+        "raw": "1.0 g/t gold-equivalent"
+      },
+      "metal": "Gold Equivalent",
+      "contained_metal": {
+        "value": 2550000.0,
+        "unit": "oz",
+        "raw": "2,550,000oz of gold-equivalent"
+      },
+      "source_pages": "53, 54"
+    }
+  ],
+  "reserves": [],
+  "economics": {
+    "capex": null,
+    "opex": null,
+    "npv": null,
+    "irr": null,
+    "currency": null,
+    "source_pages": null
+  },
+  "confidence": 0.5,
+  "warnings": [
+    "reserves missing; retrying with fallback selection",
+    "economics missing; retrying with fallback selection",
+    "economics missing numeric values"
+  ]
+}

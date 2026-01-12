@@ -1,0 +1,193 @@
+{
+  "metadata": {
+    "project_name": "Nechí Alluvial Property",
+    "company_name": "Mineros S.A.",
+    "location_country": "Colombia",
+    "location_region": "South America",
+    "report_date": "2025-03-31",
+    "report_date_raw": "March 31, 2025",
+    "source_pdf": "sedar__Mineros_SA__technical-report__2B2256D4.pdf"
+  },
+  "resources": [
+    {
+      "category": "Measured",
+      "tonnes": {
+        "value": 79.0,
+        "unit": "Mm³",
+        "raw": "79"
+      },
+      "grade": {
+        "value": 55.0,
+        "unit": "mg/m³ Au",
+        "raw": "55"
+      },
+      "metal": "Gold",
+      "contained_metal": {
+        "value": 140.0,
+        "unit": "koz Au",
+        "raw": "140"
+      },
+      "source_pages": "Page 23, Page 89, Page 117"
+    },
+    {
+      "category": "Indicated",
+      "tonnes": {
+        "value": 448.0,
+        "unit": "Mm³",
+        "raw": "448"
+      },
+      "grade": {
+        "value": 56.0,
+        "unit": "mg/m³ Au",
+        "raw": "56"
+      },
+      "metal": "Gold",
+      "contained_metal": {
+        "value": 865.0,
+        "unit": "koz Au",
+        "raw": "865"
+      },
+      "source_pages": "Page 23, Page 89, Page 117"
+    },
+    {
+      "category": "Total Measured and Indicated",
+      "tonnes": {
+        "value": 527.0,
+        "unit": "Mm³",
+        "raw": "527"
+      },
+      "grade": {
+        "value": 56.0,
+        "unit": "mg/m³ Au",
+        "raw": "56"
+      },
+      "metal": "Gold",
+      "contained_metal": {
+        "value": 1005.0,
+        "unit": "koz Au",
+        "raw": "1,005"
+      },
+      "source_pages": "Page 23, Page 89, Page 117"
+    },
+    {
+      "category": "Inferred",
+      "tonnes": {
+        "value": 223.0,
+        "unit": "Mm³",
+        "raw": "223"
+      },
+      "grade": {
+        "value": 62.0,
+        "unit": "mg/m³ Au",
+        "raw": "62"
+      },
+      "metal": "Gold",
+      "contained_metal": {
+        "value": 447.0,
+        "unit": "koz Au",
+        "raw": "447"
+      },
+      "source_pages": "Page 23, Page 89, Page 117"
+    },
+    {
+      "category": "Measured + Indicated (2021 Model)",
+      "tonnes": {
+        "value": 528.0,
+        "unit": "Mm³",
+        "raw": "528"
+      },
+      "grade": {
+        "value": 71.0,
+        "unit": "mg/m³",
+        "raw": "71"
+      },
+      "metal": "Fine Gold",
+      "contained_metal": {
+        "value": 1211.0,
+        "unit": "koz Au",
+        "raw": "1,211"
+      },
+      "source_pages": "Page 118"
+    }
+  ],
+  "reserves": [
+    {
+      "category": "Proven",
+      "tonnes": {
+        "value": 86.0,
+        "unit": "Mm3",
+        "raw": "86"
+      },
+      "grade": {
+        "value": 71.0,
+        "unit": "mg/m3",
+        "raw": "71"
+      },
+      "metal": "Au",
+      "contained_metal": {
+        "value": 195.0,
+        "unit": "koz Au",
+        "raw": "195"
+      },
+      "source_pages": "25, 119"
+    },
+    {
+      "category": "Probable",
+      "tonnes": {
+        "value": 438.0,
+        "unit": "Mm3",
+        "raw": "438"
+      },
+      "grade": {
+        "value": 82.0,
+        "unit": "mg/m3",
+        "raw": "82"
+      },
+      "metal": "Au",
+      "contained_metal": {
+        "value": 1159.0,
+        "unit": "koz Au",
+        "raw": "1,159"
+      },
+      "source_pages": "25, 119"
+    },
+    {
+      "category": "Proven and Probable",
+      "tonnes": {
+        "value": 524.0,
+        "unit": "Mm3",
+        "raw": "524"
+      },
+      "grade": {
+        "value": 81.0,
+        "unit": "mg/m3",
+        "raw": "81"
+      },
+      "metal": "Au",
+      "contained_metal": {
+        "value": 1355.0,
+        "unit": "koz Au",
+        "raw": "1,355"
+      },
+      "source_pages": "25, 119"
+    }
+  ],
+  "economics": {
+    "capex": {
+      "value": 279099.0,
+      "unit": "000",
+      "raw": "279,099"
+    },
+    "opex": {
+      "value": 815376.0,
+      "unit": "000",
+      "raw": "815,376"
+    },
+    "npv": null,
+    "irr": null,
+    "currency": "US$",
+    "source_pages": "31, 32, 215, 216"
+  },
+  "confidence": 1.0,
+  "warnings": []
+}

@@ -1,0 +1,173 @@
+{
+  "metadata": {
+    "project_name": "Segovia Operations",
+    "company_name": "Aris Mining Corporation",
+    "location_country": "Colombia",
+    "location_region": "Antioquia",
+    "report_date": "2023-12-06",
+    "report_date_raw": "December 6, 2023",
+    "source_pdf": "sedar__000003116_Aris_Mining_Corporation__technical-report__878C2FBC.pdf"
+  },
+  "resources": [
+    {
+      "category": "Measured",
+      "tonnes": {
+        "value": 4.1,
+        "unit": "Mt",
+        "raw": "4.1"
+      },
+      "grade": {
+        "value": 14.31,
+        "unit": "g/t",
+        "raw": "14.31"
+      },
+      "metal": "Gold",
+      "contained_metal": {
+        "value": 1893.0,
+        "unit": "koz",
+        "raw": "1,893"
+      },
+      "source_pages": "9, 38"
+    },
+    {
+      "category": "Indicated",
+      "tonnes": {
+        "value": 3.8,
+        "unit": "Mt",
+        "raw": "3.8"
+      },
+      "grade": {
+        "value": 14.38,
+        "unit": "g/t",
+        "raw": "14.38"
+      },
+      "metal": "Gold",
+      "contained_metal": {
+        "value": 1736.0,
+        "unit": "koz",
+        "raw": "1,736"
+      },
+      "source_pages": "9, 38"
+    },
+    {
+      "category": "Measured + Indicated",
+      "tonnes": {
+        "value": 7.9,
+        "unit": "Mt",
+        "raw": "7.9"
+      },
+      "grade": {
+        "value": 14.34,
+        "unit": "g/t",
+        "raw": "14.34"
+      },
+      "metal": "Gold",
+      "contained_metal": {
+        "value": 3629.0,
+        "unit": "koz",
+        "raw": "3,629"
+      },
+      "source_pages": "9, 38"
+    },
+    {
+      "category": "Inferred",
+      "tonnes": {
+        "value": 4.7,
+        "unit": "Mt",
+        "raw": "4.7"
+      },
+      "grade": {
+        "value": 12.11,
+        "unit": "g/t",
+        "raw": "12.11"
+      },
+      "metal": "Gold",
+      "contained_metal": {
+        "value": 1823.0,
+        "unit": "koz",
+        "raw": "1,823"
+      },
+      "source_pages": "9, 38"
+    }
+  ],
+  "reserves": [
+    {
+      "category": "Proven",
+      "tonnes": {
+        "value": 1515.0,
+        "unit": "kt",
+        "raw": "1,515"
+      },
+      "grade": {
+        "value": 12.25,
+        "unit": "g/t",
+        "raw": "12.25"
+      },
+      "metal": "Gold",
+      "contained_metal": {
+        "value": 597.0,
+        "unit": "koz",
+        "raw": "597"
+      },
+      "source_pages": "10, 40"
+    },
+    {
+      "category": "Probable",
+      "tonnes": {
+        "value": 2017.0,
+        "unit": "kt",
+        "raw": "2,017"
+      },
+      "grade": {
+        "value": 11.16,
+        "unit": "g/t",
+        "raw": "11.16"
+      },
+      "metal": "Gold",
+      "contained_metal": {
+        "value": 723.0,
+        "unit": "koz",
+        "raw": "723"
+      },
+      "source_pages": "10, 40"
+    },
+    {
+      "category": "Proven + Probable",
+      "tonnes": {
+        "value": 3531.0,
+        "unit": "kt",
+        "raw": "3,531"
+      },
+      "grade": {
+        "value": 11.63,
+        "unit": "g/t",
+        "raw": "11.63"
+      },
+      "metal": "Gold",
+      "contained_metal": {
+        "value": 1320.0,
+        "unit": "koz",
+        "raw": "1,320"
+      },
+      "source_pages": "10, 40"
+    }
+  ],
+  "economics": {
+    "capex": {
+      "value": 33316.0,
+      "unit": "US$ 000s",
+      "raw": "Total sustaining 16,467 + Total non-sustaining costs 16,849"
+    },
+    "opex": {
+      "value": 132368.0,
+      "unit": "US$ 000s",
+      "raw": "Mining costs 104,172 + Processing costs 16,227 + Mine site general and administration 11,969"
+    },
+    "npv": null,
+    "irr": null,
+    "currency": "US$",
+    "source_pages": "51, 52, 53"
+  },
+  "confidence": 1.0,
+  "warnings": []
+}

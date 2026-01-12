@@ -1,0 +1,112 @@
+2026-01-10 07:03:11,796 INFO {"dry_run": false, "event": "run_start", "max_workers": 1, "pdfs": 5, "run_id": "2026-01-10T12:03:11.796114+00:00", "strategy": "two_stage"}
+2026-01-10 07:03:11,796 INFO {"event": "pdf_start", "pdf": "sedar__000003116_Aris_Mining_Corporation__technical-report__878C2FBC.pdf", "sections": ["economics", "metadata", "reserves", "resources"], "strategy": "two_stage"}
+2026-01-10 07:03:12,670 INFO {"cache_hit": false, "duration_sec": 0.805, "event": "pages_extracted", "page_count": 61, "pdf": "sedar__000003116_Aris_Mining_Corporation__technical-report__878C2FBC.pdf"}
+2026-01-10 07:03:12,670 INFO {"duration_sec": 0.014, "event": "pages_selected", "pages": [0, 13, 59], "pdf": "sedar__000003116_Aris_Mining_Corporation__technical-report__878C2FBC.pdf", "section": "metadata"}
+2026-01-10 07:03:12,670 INFO {"duration_sec": 0.013, "event": "pages_selected", "pages": [5, 6, 7, 8, 9, 31, 32, 33, 35, 36, 37, 38, 39], "pdf": "sedar__000003116_Aris_Mining_Corporation__technical-report__878C2FBC.pdf", "section": "resources"}
+2026-01-10 07:03:12,670 INFO {"duration_sec": 0.013, "event": "pages_selected", "pages": [7, 8, 9, 10, 31, 32, 33, 36, 37, 38, 39, 40], "pdf": "sedar__000003116_Aris_Mining_Corporation__technical-report__878C2FBC.pdf", "section": "reserves"}
+2026-01-10 07:03:12,670 INFO {"duration_sec": 0.014, "event": "pages_selected", "pages": [3, 4, 5, 12, 13, 14, 35, 36, 37, 38, 39, 49, 50, 51, 52], "pdf": "sedar__000003116_Aris_Mining_Corporation__technical-report__878C2FBC.pdf", "section": "economics"}
+2026-01-10 07:03:20,922 INFO {"duration_sec": 8.249, "event": "tables_extracted", "pages": [5, 6, 7, 8, 9, 31, 32, 33, 35, 36, 37, 38, 39], "pdf": "sedar__000003116_Aris_Mining_Corporation__technical-report__878C2FBC.pdf", "section": "resources", "tables": 62, "tables_selected": 8}
+2026-01-10 07:03:27,947 INFO {"duration_sec": 7.025, "event": "tables_extracted", "pages": [7, 8, 9, 10, 31, 32, 33, 36, 37, 38, 39, 40], "pdf": "sedar__000003116_Aris_Mining_Corporation__technical-report__878C2FBC.pdf", "section": "reserves", "tables": 60, "tables_selected": 8}
+2026-01-10 07:03:36,218 INFO {"duration_sec": 8.27, "event": "tables_extracted", "pages": [3, 4, 5, 12, 13, 14, 35, 36, 37, 38, 39, 49, 50, 51, 52], "pdf": "sedar__000003116_Aris_Mining_Corporation__technical-report__878C2FBC.pdf", "section": "economics", "tables": 57, "tables_selected": 8}
+2026-01-10 07:03:36,778 INFO AFC is enabled with max remote calls: 10.
+2026-01-10 07:03:39,597 INFO HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent "HTTP/1.1 200 OK"
+2026-01-10 07:03:39,599 INFO {"duration_sec": 3.381, "event": "section_extracted", "input_chars": 6573, "pdf": "sedar__000003116_Aris_Mining_Corporation__technical-report__878C2FBC.pdf", "retry": false, "section": "metadata"}
+2026-01-10 07:03:39,614 INFO AFC is enabled with max remote calls: 10.
+2026-01-10 07:03:46,419 INFO HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent "HTTP/1.1 200 OK"
+2026-01-10 07:03:46,422 INFO {"duration_sec": 6.822, "event": "section_extracted", "input_chars": 47005, "pdf": "sedar__000003116_Aris_Mining_Corporation__technical-report__878C2FBC.pdf", "retry": false, "section": "resources"}
+2026-01-10 07:03:46,445 INFO AFC is enabled with max remote calls: 10.
+2026-01-10 07:03:52,717 INFO HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent "HTTP/1.1 200 OK"
+2026-01-10 07:03:52,719 INFO {"duration_sec": 6.297, "event": "section_extracted", "input_chars": 46675, "pdf": "sedar__000003116_Aris_Mining_Corporation__technical-report__878C2FBC.pdf", "retry": false, "section": "reserves"}
+2026-01-10 07:03:52,733 INFO AFC is enabled with max remote calls: 10.
+2026-01-10 07:04:14,314 INFO HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent "HTTP/1.1 200 OK"
+2026-01-10 07:04:14,318 INFO {"duration_sec": 21.599, "event": "section_extracted", "input_chars": 54908, "pdf": "sedar__000003116_Aris_Mining_Corporation__technical-report__878C2FBC.pdf", "retry": false, "section": "economics"}
+2026-01-10 07:04:14,321 INFO {"duration_sec": 62.523, "economics_has_values": true, "event": "pdf_end", "pdf": "sedar__000003116_Aris_Mining_Corporation__technical-report__878C2FBC.pdf", "reserves": 3, "resources": 4, "warnings": 0}
+2026-01-10 07:04:14,322 INFO {"event": "pdf_start", "pdf": "sedar__Alpha_One_Corporation__technical-report__C03783C6.pdf", "sections": ["economics", "metadata", "reserves", "resources"], "strategy": "two_stage"}
+2026-01-10 07:04:15,435 INFO {"cache_hit": false, "duration_sec": 1.059, "event": "pages_extracted", "page_count": 65, "pdf": "sedar__Alpha_One_Corporation__technical-report__C03783C6.pdf"}
+2026-01-10 07:04:15,435 INFO {"duration_sec": 0.01, "event": "pages_selected", "pages": [15, 45, 47], "pdf": "sedar__Alpha_One_Corporation__technical-report__C03783C6.pdf", "section": "metadata"}
+2026-01-10 07:04:15,435 INFO {"duration_sec": 0.01, "event": "pages_selected", "pages": [6, 7, 8, 16, 17, 18, 40, 41, 42, 48, 49, 50, 51, 52, 56, 57, 58], "pdf": "sedar__Alpha_One_Corporation__technical-report__C03783C6.pdf", "section": "resources"}
+2026-01-10 07:04:15,435 INFO {"duration_sec": 0.01, "event": "pages_selected", "pages": [6, 7, 8, 16, 17, 18, 40, 41, 42, 48, 49, 50, 51, 52, 56, 57, 58], "pdf": "sedar__Alpha_One_Corporation__technical-report__C03783C6.pdf", "section": "reserves"}
+2026-01-10 07:04:15,435 INFO {"duration_sec": 0.011, "event": "pages_selected", "pages": [6, 7, 8, 14, 15, 16, 17, 18, 40, 41, 42, 48, 49, 50, 56, 57, 58], "pdf": "sedar__Alpha_One_Corporation__technical-report__C03783C6.pdf", "section": "economics"}
+2026-01-10 07:04:23,192 INFO {"duration_sec": 7.755, "event": "tables_extracted", "pages": [6, 7, 8, 16, 17, 18, 40, 41, 42, 48, 49, 50, 51, 52, 56, 57, 58], "pdf": "sedar__Alpha_One_Corporation__technical-report__C03783C6.pdf", "section": "resources", "tables": 19, "tables_selected": 8}
+2026-01-10 07:04:31,405 INFO {"duration_sec": 8.213, "event": "tables_extracted", "pages": [6, 7, 8, 16, 17, 18, 40, 41, 42, 48, 49, 50, 51, 52, 56, 57, 58], "pdf": "sedar__Alpha_One_Corporation__technical-report__C03783C6.pdf", "section": "reserves", "tables": 19, "tables_selected": 8}
+2026-01-10 07:04:39,690 INFO {"duration_sec": 8.285, "event": "tables_extracted", "pages": [6, 7, 8, 14, 15, 16, 17, 18, 40, 41, 42, 48, 49, 50, 56, 57, 58], "pdf": "sedar__Alpha_One_Corporation__technical-report__C03783C6.pdf", "section": "economics", "tables": 18, "tables_selected": 8}
+2026-01-10 07:04:39,706 INFO AFC is enabled with max remote calls: 10.
+2026-01-10 07:04:43,558 INFO HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent "HTTP/1.1 200 OK"
+2026-01-10 07:04:43,561 INFO {"duration_sec": 3.87, "event": "section_extracted", "input_chars": 3730, "pdf": "sedar__Alpha_One_Corporation__technical-report__C03783C6.pdf", "retry": false, "section": "metadata"}
+2026-01-10 07:04:43,575 INFO AFC is enabled with max remote calls: 10.
+2026-01-10 07:04:54,044 INFO HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent "HTTP/1.1 200 OK"
+2026-01-10 07:04:54,046 INFO {"duration_sec": 10.485, "event": "section_extracted", "input_chars": 18385, "pdf": "sedar__Alpha_One_Corporation__technical-report__C03783C6.pdf", "retry": false, "section": "resources"}
+2026-01-10 07:04:54,061 INFO AFC is enabled with max remote calls: 10.
+2026-01-10 07:05:00,022 INFO HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent "HTTP/1.1 200 OK"
+2026-01-10 07:05:00,026 INFO {"duration_sec": 5.979, "event": "section_extracted", "input_chars": 18385, "pdf": "sedar__Alpha_One_Corporation__technical-report__C03783C6.pdf", "retry": false, "section": "reserves"}
+2026-01-10 07:05:00,039 INFO AFC is enabled with max remote calls: 10.
+2026-01-10 07:05:14,139 INFO HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent "HTTP/1.1 200 OK"
+2026-01-10 07:05:14,141 INFO {"duration_sec": 14.115, "event": "section_extracted", "input_chars": 46870, "pdf": "sedar__Alpha_One_Corporation__technical-report__C03783C6.pdf", "retry": false, "section": "economics"}
+2026-01-10 07:05:14,145 INFO {"duration_sec": 59.82, "economics_has_values": true, "event": "pdf_end", "pdf": "sedar__Alpha_One_Corporation__technical-report__C03783C6.pdf", "reserves": 0, "resources": 4, "warnings": 1}
+2026-01-10 07:05:14,145 INFO {"event": "pdf_start", "pdf": "sedar__Colombia_Crest_Gold_Corp__technical-report__D11891E2.pdf", "sections": ["economics", "metadata", "reserves", "resources"], "strategy": "two_stage"}
+2026-01-10 07:05:15,240 INFO {"cache_hit": false, "duration_sec": 1.031, "event": "pages_extracted", "page_count": 84, "pdf": "sedar__Colombia_Crest_Gold_Corp__technical-report__D11891E2.pdf"}
+2026-01-10 07:05:15,240 INFO {"duration_sec": 0.012, "event": "pages_selected", "pages": [8, 13, 23], "pdf": "sedar__Colombia_Crest_Gold_Corp__technical-report__D11891E2.pdf", "section": "metadata"}
+2026-01-10 07:05:15,240 INFO {"duration_sec": 0.012, "event": "pages_selected", "pages": [19, 20, 21, 26, 27, 28, 40, 41, 42, 43, 44, 45, 50, 51, 52, 53], "pdf": "sedar__Colombia_Crest_Gold_Corp__technical-report__D11891E2.pdf", "section": "resources"}
+2026-01-10 07:05:15,240 INFO {"duration_sec": 0.012, "event": "pages_selected", "pages": [2, 3, 4, 9, 10, 11, 12, 13, 38, 39, 40, 41, 42, 50, 51, 52], "pdf": "sedar__Colombia_Crest_Gold_Corp__technical-report__D11891E2.pdf", "section": "reserves"}
+2026-01-10 07:05:15,240 INFO {"duration_sec": 0.013, "event": "pages_selected", "pages": [2, 3, 4, 9, 10, 11, 13, 14, 15, 38, 39, 40, 41, 42, 50, 51, 52], "pdf": "sedar__Colombia_Crest_Gold_Corp__technical-report__D11891E2.pdf", "section": "economics"}
+2026-01-10 07:05:27,243 INFO {"duration_sec": 12.0, "event": "tables_extracted", "pages": [19, 20, 21, 26, 27, 28, 40, 41, 42, 43, 44, 45, 50, 51, 52, 53], "pdf": "sedar__Colombia_Crest_Gold_Corp__technical-report__D11891E2.pdf", "section": "resources", "tables": 30, "tables_selected": 8}
+2026-01-10 07:05:38,541 INFO {"duration_sec": 11.298, "event": "tables_extracted", "pages": [2, 3, 4, 9, 10, 11, 12, 13, 38, 39, 40, 41, 42, 50, 51, 52], "pdf": "sedar__Colombia_Crest_Gold_Corp__technical-report__D11891E2.pdf", "section": "reserves", "tables": 34, "tables_selected": 8}
+2026-01-10 07:05:50,959 INFO {"duration_sec": 12.418, "event": "tables_extracted", "pages": [2, 3, 4, 9, 10, 11, 13, 14, 15, 38, 39, 40, 41, 42, 50, 51, 52], "pdf": "sedar__Colombia_Crest_Gold_Corp__technical-report__D11891E2.pdf", "section": "economics", "tables": 34, "tables_selected": 8}
+2026-01-10 07:05:50,974 INFO AFC is enabled with max remote calls: 10.
+2026-01-10 07:05:55,272 INFO HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent "HTTP/1.1 200 OK"
+2026-01-10 07:05:55,274 INFO {"duration_sec": 4.314, "event": "section_extracted", "input_chars": 7963, "pdf": "sedar__Colombia_Crest_Gold_Corp__technical-report__D11891E2.pdf", "retry": false, "section": "metadata"}
+2026-01-10 07:05:55,289 INFO AFC is enabled with max remote calls: 10.
+2026-01-10 07:06:12,070 INFO HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent "HTTP/1.1 200 OK"
+2026-01-10 07:06:12,073 INFO {"duration_sec": 16.798, "event": "section_extracted", "input_chars": 21052, "pdf": "sedar__Colombia_Crest_Gold_Corp__technical-report__D11891E2.pdf", "retry": false, "section": "resources"}
+2026-01-10 07:06:12,087 INFO AFC is enabled with max remote calls: 10.
+2026-01-10 07:06:14,885 INFO HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent "HTTP/1.1 200 OK"
+2026-01-10 07:06:14,889 INFO {"duration_sec": 2.816, "event": "section_extracted", "input_chars": 24288, "pdf": "sedar__Colombia_Crest_Gold_Corp__technical-report__D11891E2.pdf", "retry": false, "section": "reserves"}
+2026-01-10 07:06:14,906 INFO AFC is enabled with max remote calls: 10.
+2026-01-10 07:06:20,317 INFO HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent "HTTP/1.1 200 OK"
+2026-01-10 07:06:20,320 INFO {"duration_sec": 5.431, "event": "section_extracted", "input_chars": 56315, "pdf": "sedar__Colombia_Crest_Gold_Corp__technical-report__D11891E2.pdf", "retry": false, "section": "economics"}
+2026-01-10 07:06:20,326 INFO {"duration_sec": 66.176, "economics_has_values": false, "event": "pdf_end", "pdf": "sedar__Colombia_Crest_Gold_Corp__technical-report__D11891E2.pdf", "reserves": 0, "resources": 9, "warnings": 3}
+2026-01-10 07:06:20,326 INFO {"event": "pdf_start", "pdf": "sedar__Mineros_SA__technical-report__2B2256D4.pdf", "sections": ["economics", "metadata", "reserves", "resources"], "strategy": "two_stage"}
+2026-01-10 07:06:23,582 INFO {"cache_hit": false, "duration_sec": 3.019, "event": "pages_extracted", "page_count": 241, "pdf": "sedar__Mineros_SA__technical-report__2B2256D4.pdf"}
+2026-01-10 07:06:23,582 INFO {"duration_sec": 0.044, "event": "pages_selected", "pages": [32, 196, 201], "pdf": "sedar__Mineros_SA__technical-report__2B2256D4.pdf", "section": "metadata"}
+2026-01-10 07:06:23,582 INFO {"duration_sec": 0.048, "event": "pages_selected", "pages": [21, 22, 23, 24, 87, 88, 89, 107, 108, 109, 115, 116, 117, 118], "pdf": "sedar__Mineros_SA__technical-report__2B2256D4.pdf", "section": "resources"}
+2026-01-10 07:06:23,582 INFO {"duration_sec": 0.048, "event": "pages_selected", "pages": [11, 12, 13, 22, 23, 24, 25, 108, 109, 110, 117, 118, 119, 157, 158, 159], "pdf": "sedar__Mineros_SA__technical-report__2B2256D4.pdf", "section": "reserves"}
+2026-01-10 07:06:23,582 INFO {"duration_sec": 0.052, "event": "pages_selected", "pages": [3, 4, 5, 6, 7, 8, 29, 30, 31, 213, 214, 215, 225, 226, 227], "pdf": "sedar__Mineros_SA__technical-report__2B2256D4.pdf", "section": "economics"}
+2026-01-10 07:06:32,825 INFO {"duration_sec": 9.238, "event": "tables_extracted", "pages": [21, 22, 23, 24, 87, 88, 89, 107, 108, 109, 115, 116, 117, 118], "pdf": "sedar__Mineros_SA__technical-report__2B2256D4.pdf", "section": "resources", "tables": 44, "tables_selected": 8}
+2026-01-10 07:06:44,011 INFO {"duration_sec": 11.186, "event": "tables_extracted", "pages": [11, 12, 13, 22, 23, 24, 25, 108, 109, 110, 117, 118, 119, 157, 158, 159], "pdf": "sedar__Mineros_SA__technical-report__2B2256D4.pdf", "section": "reserves", "tables": 39, "tables_selected": 8}
+2026-01-10 07:06:54,752 INFO {"duration_sec": 10.74, "event": "tables_extracted", "pages": [3, 4, 5, 6, 7, 8, 29, 30, 31, 213, 214, 215, 225, 226, 227], "pdf": "sedar__Mineros_SA__technical-report__2B2256D4.pdf", "section": "economics", "tables": 29, "tables_selected": 8}
+2026-01-10 07:06:54,768 INFO AFC is enabled with max remote calls: 10.
+2026-01-10 07:07:01,948 INFO HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent "HTTP/1.1 200 OK"
+2026-01-10 07:07:01,951 INFO {"duration_sec": 7.199, "event": "section_extracted", "input_chars": 10952, "pdf": "sedar__Mineros_SA__technical-report__2B2256D4.pdf", "retry": false, "section": "metadata"}
+2026-01-10 07:07:01,966 INFO AFC is enabled with max remote calls: 10.
+2026-01-10 07:07:14,328 INFO HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent "HTTP/1.1 200 OK"
+2026-01-10 07:07:14,332 INFO {"duration_sec": 12.381, "event": "section_extracted", "input_chars": 53560, "pdf": "sedar__Mineros_SA__technical-report__2B2256D4.pdf", "retry": false, "section": "resources"}
+2026-01-10 07:07:14,347 INFO AFC is enabled with max remote calls: 10.
+2026-01-10 07:07:26,721 INFO HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent "HTTP/1.1 200 OK"
+2026-01-10 07:07:26,724 INFO {"duration_sec": 12.391, "event": "section_extracted", "input_chars": 48560, "pdf": "sedar__Mineros_SA__technical-report__2B2256D4.pdf", "retry": false, "section": "reserves"}
+2026-01-10 07:07:26,737 INFO AFC is enabled with max remote calls: 10.
+2026-01-10 07:07:35,731 INFO HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent "HTTP/1.1 200 OK"
+2026-01-10 07:07:35,733 INFO {"duration_sec": 9.01, "event": "section_extracted", "input_chars": 65549, "pdf": "sedar__Mineros_SA__technical-report__2B2256D4.pdf", "retry": false, "section": "economics"}
+2026-01-10 07:07:35,744 INFO {"duration_sec": 75.408, "economics_has_values": true, "event": "pdf_end", "pdf": "sedar__Mineros_SA__technical-report__2B2256D4.pdf", "reserves": 3, "resources": 4, "warnings": 0}
+2026-01-10 07:07:35,744 INFO {"event": "pdf_start", "pdf": "sedar__Sunward_Resources_Ltd__technical-report__278C5D9A.pdf", "sections": ["economics", "metadata", "reserves", "resources"], "strategy": "two_stage"}
+2026-01-10 07:07:38,469 INFO {"cache_hit": false, "duration_sec": 2.567, "event": "pages_extracted", "page_count": 187, "pdf": "sedar__Sunward_Resources_Ltd__technical-report__278C5D9A.pdf"}
+2026-01-10 07:07:38,469 INFO {"duration_sec": 0.028, "event": "pages_selected", "pages": [19, 121, 157], "pdf": "sedar__Sunward_Resources_Ltd__technical-report__278C5D9A.pdf", "section": "metadata"}
+2026-01-10 07:07:38,469 INFO {"duration_sec": 0.032, "event": "pages_selected", "pages": [12, 13, 14, 15, 16, 129, 130, 131, 132, 133, 134, 135, 136], "pdf": "sedar__Sunward_Resources_Ltd__technical-report__278C5D9A.pdf", "section": "resources"}
+2026-01-10 07:07:38,469 INFO {"duration_sec": 0.033, "event": "pages_selected", "pages": [14, 15, 16, 128, 129, 130, 131, 132, 133, 134, 135], "pdf": "sedar__Sunward_Resources_Ltd__technical-report__278C5D9A.pdf", "section": "reserves"}
+2026-01-10 07:07:38,469 INFO {"duration_sec": 0.035, "event": "pages_selected", "pages": [89, 90, 91, 92, 93, 131, 132, 133, 145, 146, 147, 160, 161, 162], "pdf": "sedar__Sunward_Resources_Ltd__technical-report__278C5D9A.pdf", "section": "economics"}
+2026-01-10 07:07:49,542 INFO {"duration_sec": 11.07, "event": "tables_extracted", "pages": [12, 13, 14, 15, 16, 129, 130, 131, 132, 133, 134, 135, 136], "pdf": "sedar__Sunward_Resources_Ltd__technical-report__278C5D9A.pdf", "section": "resources", "tables": 45, "tables_selected": 8}
+2026-01-10 07:07:58,579 INFO {"duration_sec": 9.036, "event": "tables_extracted", "pages": [14, 15, 16, 128, 129, 130, 131, 132, 133, 134, 135], "pdf": "sedar__Sunward_Resources_Ltd__technical-report__278C5D9A.pdf", "section": "reserves", "tables": 48, "tables_selected": 8}
+2026-01-10 07:08:10,201 INFO {"duration_sec": 11.621, "event": "tables_extracted", "pages": [89, 90, 91, 92, 93, 131, 132, 133, 145, 146, 147, 160, 161, 162], "pdf": "sedar__Sunward_Resources_Ltd__technical-report__278C5D9A.pdf", "section": "economics", "tables": 41, "tables_selected": 8}
+2026-01-10 07:08:10,215 INFO AFC is enabled with max remote calls: 10.
+2026-01-10 07:08:15,285 INFO HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent "HTTP/1.1 200 OK"
+2026-01-10 07:08:15,287 INFO {"duration_sec": 5.086, "event": "section_extracted", "input_chars": 8198, "pdf": "sedar__Sunward_Resources_Ltd__technical-report__278C5D9A.pdf", "retry": false, "section": "metadata"}
+2026-01-10 07:08:15,303 INFO AFC is enabled with max remote calls: 10.
+2026-01-10 07:08:48,560 INFO HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent "HTTP/1.1 200 OK"
+2026-01-10 07:08:48,566 INFO {"duration_sec": 33.278, "event": "section_extracted", "input_chars": 46005, "pdf": "sedar__Sunward_Resources_Ltd__technical-report__278C5D9A.pdf", "retry": false, "section": "resources"}
+2026-01-10 07:08:48,586 INFO AFC is enabled with max remote calls: 10.
+2026-01-10 07:08:51,202 INFO HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent "HTTP/1.1 200 OK"
+2026-01-10 07:08:51,204 INFO {"duration_sec": 2.638, "event": "section_extracted", "input_chars": 36410, "pdf": "sedar__Sunward_Resources_Ltd__technical-report__278C5D9A.pdf", "retry": false, "section": "reserves"}
+2026-01-10 07:08:51,220 INFO AFC is enabled with max remote calls: 10.
+2026-01-10 07:08:56,015 INFO HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent "HTTP/1.1 200 OK"
+2026-01-10 07:08:56,019 INFO {"duration_sec": 4.815, "event": "section_extracted", "input_chars": 59217, "pdf": "sedar__Sunward_Resources_Ltd__technical-report__278C5D9A.pdf", "retry": false, "section": "economics"}
+2026-01-10 07:08:56,030 INFO {"duration_sec": 80.276, "economics_has_values": false, "event": "pdf_end", "pdf": "sedar__Sunward_Resources_Ltd__technical-report__278C5D9A.pdf", "reserves": 0, "resources": 14, "warnings": 5}
+2026-01-10 07:08:56,084 INFO {"duration_sec": 344.287, "event": "run_end", "pdfs": 5, "run_id": "2026-01-10T12:03:11.796114+00:00"}

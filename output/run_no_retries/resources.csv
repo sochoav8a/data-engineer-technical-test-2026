@@ -1,0 +1,37 @@
+source_pdf,category,metal,tonnes_value,tonnes_unit,grade_value,grade_unit,contained_value,contained_unit,source_pages
+sedar__000003116_Aris_Mining_Corporation__technical-report__878C2FBC.pdf,Measured,Gold,4.1,Mt,14.31,g/t,1893.0,koz,"9, 38"
+sedar__000003116_Aris_Mining_Corporation__technical-report__878C2FBC.pdf,Indicated,Gold,3.8,Mt,14.38,g/t,1736.0,koz,"9, 38"
+sedar__000003116_Aris_Mining_Corporation__technical-report__878C2FBC.pdf,Measured + Indicated,Gold,7.9,Mt,14.34,g/t,3629.0,koz,"9, 38"
+sedar__000003116_Aris_Mining_Corporation__technical-report__878C2FBC.pdf,Inferred,Gold,4.7,Mt,12.11,g/t,1823.0,koz,"9, 38"
+sedar__Alpha_One_Corporation__technical-report__C03783C6.pdf,Reserve,Cu,500.0,000,,% Cu,,,52
+sedar__Alpha_One_Corporation__technical-report__C03783C6.pdf,Resource Potential,Cu,,000,,% Cu eq,,,52
+sedar__Alpha_One_Corporation__technical-report__C03783C6.pdf,Resource Potential,Cu,,000,,% Cu eq,,,52
+sedar__Alpha_One_Corporation__technical-report__C03783C6.pdf,Resource,Cu,27186.0,000,1.88,% Cu,,,52
+sedar__Colombia_Crest_Gold_Corp__technical-report__D11891E2.pdf,measured/indicated,gold,,,,,7.5,million ounces,28
+sedar__Colombia_Crest_Gold_Corp__technical-report__D11891E2.pdf,inferred,gold,,,,,2.2,million ounces,28
+sedar__Colombia_Crest_Gold_Corp__technical-report__D11891E2.pdf,Measured and Indicated Resources,gold,275.4,million tonnes,0.52,grams/tonne,4.58,million ounces,52
+sedar__Colombia_Crest_Gold_Corp__technical-report__D11891E2.pdf,Measured and Indicated Resources,copper,275.4,million tonnes,0.17,%,615.4,million pounds,52
+sedar__Colombia_Crest_Gold_Corp__technical-report__D11891E2.pdf,Inferred Resources,gold,359.6,million tonnes,0.56,grams/tonne,6.44,million ounces,52
+sedar__Colombia_Crest_Gold_Corp__technical-report__D11891E2.pdf,Inferred Resources,copper,359.6,million tonnes,0.09,%,388.5,million pounds,52
+sedar__Colombia_Crest_Gold_Corp__technical-report__D11891E2.pdf,inferred resource,gold,80.0,million tonnes,0.62,g/t,1600000.0,oz,54
+sedar__Colombia_Crest_Gold_Corp__technical-report__D11891E2.pdf,inferred resource,copper,80.0,million tonnes,0.24,%,419.0,million pounds,54
+sedar__Colombia_Crest_Gold_Corp__technical-report__D11891E2.pdf,inferred resource,gold-equivalent,80.0,million tonnes,1.0,g/t,2550000.0,oz,54
+sedar__Mineros_SA__technical-report__2B2256D4.pdf,Measured,Gold,79.0,Mm³,55.0,mg/m³ Au,140.0,koz Au,"23, 89, 117"
+sedar__Mineros_SA__technical-report__2B2256D4.pdf,Indicated,Gold,448.0,Mm³,56.0,mg/m³ Au,865.0,koz Au,"23, 89, 117"
+sedar__Mineros_SA__technical-report__2B2256D4.pdf,Total Measured and Indicated,Gold,527.0,Mm³,56.0,mg/m³ Au,1005.0,koz Au,"23, 89, 117"
+sedar__Mineros_SA__technical-report__2B2256D4.pdf,Inferred,Gold,223.0,Mm³,62.0,mg/m³ Au,447.0,koz Au,"23, 89, 117"
+sedar__Mineros_SA__technical-report__2B2256D4.pdf,Measured + Indicated (2021 Model),Fine Gold,528.0,Mm³,71.0,mg/m³,1211.0,koz Au,118
+sedar__Sunward_Resources_Ltd__technical-report__278C5D9A.pdf,Measured + Indicated,Au,285.8,Million Tonnes,0.5,g/t,4.63,million oz,134
+sedar__Sunward_Resources_Ltd__technical-report__278C5D9A.pdf,Measured + Indicated,Cu,285.8,Million Tonnes,,%,654.4,million lbs,134
+sedar__Sunward_Resources_Ltd__technical-report__278C5D9A.pdf,Inferred,Au,349.4,Million Tonnes,0.53,g/t,6.01,million oz,135
+sedar__Sunward_Resources_Ltd__technical-report__278C5D9A.pdf,Inferred,Cu,349.4,Million Tonnes,,%,216.3,million lbs,135
+sedar__Sunward_Resources_Ltd__technical-report__278C5D9A.pdf,Measured,Au,51.6,Million Tonnes,0.492,g/t,0.82,million oz,134
+sedar__Sunward_Resources_Ltd__technical-report__278C5D9A.pdf,Measured,Cu,51.6,Million Tonnes,0.172,%,195.1,million lbs,134
+sedar__Sunward_Resources_Ltd__technical-report__278C5D9A.pdf,Indicated,Au,132.4,Million Tonnes,0.483,g/t,2.06,million oz,134
+sedar__Sunward_Resources_Ltd__technical-report__278C5D9A.pdf,Indicated,Cu,132.4,Million Tonnes,0.157,%,459.3,million lbs,134
+sedar__Sunward_Resources_Ltd__technical-report__278C5D9A.pdf,Indicated,Au,62.1,Million Tonnes,0.484,g/t,0.97,million oz,134
+sedar__Sunward_Resources_Ltd__technical-report__278C5D9A.pdf,Indicated,Au,39.7,Million Tonnes,0.618,g/t,0.79,million oz,134
+sedar__Sunward_Resources_Ltd__technical-report__278C5D9A.pdf,Inferred,Au,153.0,Million Tonnes,0.573,g/t,2.82,million oz,135
+sedar__Sunward_Resources_Ltd__technical-report__278C5D9A.pdf,Inferred,Cu,153.0,Million Tonnes,0.064,%,216.3,million lbs,135
+sedar__Sunward_Resources_Ltd__technical-report__278C5D9A.pdf,Inferred,Au,100.2,Million Tonnes,0.467,g/t,1.51,million oz,135
+sedar__Sunward_Resources_Ltd__technical-report__278C5D9A.pdf,Inferred,Au,96.2,Million Tonnes,0.543,g/t,1.68,million oz,135

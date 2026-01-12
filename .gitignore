@@ -11,7 +11,7 @@ __pycache__/
 .pytest_cache/
 
 # Outputs / caches
-output/
+
 
 # OS
 .DS_Store
