@@ -69,6 +69,7 @@ def rank_pages(
         table_hit = _has_table_signal(text)
         table_number_hit = _table_number_hit(text)
         numeric_density = _numeric_density(text)
+        # Blend textual signals (keywords/tables) with numeric density for ranking.
         score = (
             hits * config.keyword_weight
             + (config.table_weight if table_hit else 0.0)
@@ -96,6 +97,7 @@ def rank_pages(
 
     sim_scores: dict[int, float] = {}
     if embed_settings.enabled:
+        # Embeddings are optional; when disabled we rely only on heuristics above.
         query_embedding = embed_store.embed_text(config.query)
         if query_embedding:
             for idx in candidates:

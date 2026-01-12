@@ -23,6 +23,7 @@ def get_pdf_page_count(pdf_path: Path) -> int:
 
 
 def _cache_signature(pdf_path: Path) -> str:
+    # Use file size + mtime to invalidate cached page text cheaply.
     stat = pdf_path.stat()
     return f"{stat.st_mtime_ns}:{stat.st_size}"
 
@@ -51,6 +52,7 @@ def extract_pdf_pages(pdf_path: Path, cache_dir: Path | None = None) -> tuple[li
 
     page_count = get_pdf_page_count(pdf_path)
     if page_count <= 0:
+        # Fallback: extract all text when pdfinfo is missing or fails.
         try:
             text = subprocess.check_output(
                 ["pdftotext", "-layout", str(pdf_path), "-"],

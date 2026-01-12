@@ -207,6 +207,7 @@ def extract_relevant_page_snippets(text: str, keywords: Sequence[str], window: i
             snippet.append(line)
 
         if snippet:
+            # Preserve Page N headers so source_pages remains traceable.
             kept_parts.append("\n".join([header] + snippet))
 
     if kept_parts:

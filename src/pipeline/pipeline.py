@@ -95,6 +95,7 @@ def _combine_contexts(table_context: str, text_context: str, max_chars: int) -> 
         return text_context
     if not text_context:
         return table_context
+    # Keep a budget for tables because they carry dense numeric signals.
     table_budget = int(max_chars * 0.4)
     text_budget = max_chars - table_budget - 2
     table_part = clamp_text(table_context, table_budget)
@@ -234,6 +235,7 @@ def process_pdf_two_stage(pdf_path: Path, settings: Settings) -> tuple[Extractio
     pages, contexts, page_indices, context_metrics = _build_two_stage_contexts(
         pdf_path, settings, sections
     )
+    # Detect explicit "no reserves/economics" statements to explain empty outputs.
     no_reserves_pages = find_pages_with_patterns(pages, NO_RESERVES_PATTERNS)
     no_economics_pages = find_pages_with_patterns(pages, NO_ECONOMICS_PATTERNS)
     log_event(

@@ -155,6 +155,7 @@ def filter_tables_for_section(
         digest = hashlib.sha256(text.encode("utf-8")).hexdigest()
         if digest in seen:
             continue
+        # Score tables to prioritize high-signal rows and avoid flooding the LLM context.
         score = _table_score(text, keywords)
         seen[digest] = (score, table)
 
